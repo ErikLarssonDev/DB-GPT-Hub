@@ -847,14 +847,17 @@ def get_dataset(
 
     for dataset_attr in data_args.dataset_list:
         logger.info("Loading dataset {}...".format(dataset_attr))
-
+        print(f"dataset_attr {dataset_attr.load_from}") 
         if dataset_attr.load_from == "hf_hub":
+            print("hf_hub")
             data_path = dataset_attr.dataset_name
             data_files = None
         elif dataset_attr.load_from == "script":
+            print("script")
             data_path = os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)
             data_files = None
         elif dataset_attr.load_from == "file":
+            print("file")
             data_path = None
             data_files: List[str] = []
 
@@ -883,6 +886,8 @@ def get_dataset(
                 )
                 data_path = EXT2TYPE.get(dataset_attr.dataset_name.split(".")[-1], None)
             else:
+                print(data_args.dataset_dir, dataset_attr.dataset_name)
+                print(f"data_path {data_path}")
                 raise ValueError("File not found.")
 
             assert data_path, "File extension must be txt, csv, json or jsonl."

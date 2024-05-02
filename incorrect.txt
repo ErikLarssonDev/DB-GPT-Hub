@@ -1,0 +1,1085 @@
+index: 1
+db_id: concert_singer
+easy pred: SELECT border FROM border_info WHERE state_name = 'arizona'
+easy gold: SELECT count(*) FROM singer
+
+index: 2
+db_id: concert_singer
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ONTARIO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MEMPHIS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM singer
+
+index: 3
+db_id: concert_singer
+medium pred: SELECT DISTINCT name, number FROM course WHERE credits = 9 AND department = 'EECS'
+medium gold: SELECT name ,  country ,  age FROM singer ORDER BY age DESC
+
+index: 4
+db_id: concert_singer
+medium pred: SELECT DISTINCT fare.fare_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, fare, flight, flight_fare WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DALLAS' AND date_day.day_number = 16 AND date_day.month_number = 12 AND date_day.year = 1991 AND flight_fare.fare_id = fare.fare_id AND flight.flight_id = flight_fare.flight_id AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'OAKLAND' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND fare.one_direction_cost = 178
+medium gold: SELECT name ,  country ,  age FROM singer ORDER BY age DESC
+
+index: 5
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport AS AIRPORT_0, airport AS AIRPORT_1, airport AS AIRPORT_2, city AS CITY_0, city AS CITY_1, city AS CITY_2, flight, flight_stop WHERE (CITY_0.city_code = AIRPORT_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND CITY_2.city_code = AIRPORT_2.city_code AND CITY_2.city_name = 'DENVER' AND flight.from_airport = AIRPORT_0.airport_code AND flight.to_airport = AIRPORT_1.airport_code) AND flight_stop.stop_airport = AIRPORT_2.airport_code AND flight.flight_id = flight_stop.flight_id
+medium gold: SELECT avg(age) ,  min(age) ,  max(age) FROM singer WHERE country  =  'France'
+
+index: 6
+db_id: concert_singer
+medium pred: SELECT DISTINCT airline.airline_code FROM airline, airport, flight WHERE airport.airport_code = 'MKE' AND flight.airline_code = airline.airline_code AND flight.to_airport = airport.airport_code
+medium gold: SELECT avg(age) ,  min(age) ,  max(age) FROM singer WHERE country  =  'France'
+
+index: 7
+db_id: concert_singer
+medium pred: SELECT DISTINCT num_enrolled FROM course WHERE department = 'EECS' AND number = 483
+medium gold: SELECT song_name ,  song_release_year FROM singer ORDER BY age LIMIT 1
+
+index: 8
+db_id: concert_singer
+medium pred: SELECT COUNT(DISTINCT course.course_id) FROM course INNER JOIN course_offering ON course.course_id = course_offering.course_id INNER JOIN semester ON semester.semester_id = course_offering.semester WHERE course.credits = 14 AND semester.semester = 'Spring-Summer' AND semester.year = 2016
+medium gold: SELECT song_name ,  song_release_year FROM singer ORDER BY age LIMIT 1
+
+index: 9
+db_id: concert_singer
+easy pred: SELECT restaurant.name FROM location, restaurant WHERE location.city_name = 'mountain view' AND restaurant.food_type = 'arabic' AND restaurant.id = location.restaurant_id
+easy gold: SELECT DISTINCT country FROM singer WHERE age  >  20
+
+index: 10
+db_id: concert_singer
+easy pred: SELECT DISTINCT instructor.name FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'FRENCH' AND course.number = 656 AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id AND (course_offering.semester = 'Spring-Summer' OR course_offering.semester = 'Spring-Summer') AND instructor.uniqname LIKE '%A111%'
+easy gold: SELECT DISTINCT country FROM singer WHERE age  >  20
+
+index: 11
+db_id: concert_singer
+medium pred: SELECT DISTINCT paper.paperid FROM paper, venue WHERE paper.year = 2014 AND venue.venueid = paper.venueid AND venue.venuename = 'ACL'
+medium gold: SELECT country ,  count(*) FROM singer GROUP BY country
+
+index: 12
+db_id: concert_singer
+medium pred: SELECT river_name FROM river WHERE length = (SELECT MAX(RIVERalias1.length) FROM river AS RIVERalias1)
+medium gold: SELECT country ,  count(*) FROM singer GROUP BY country
+
+index: 13
+db_id: concert_singer
+hard pred: SELECT DISTINCT course_offering.course_id FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'EECS' AND course.number BETWEEN 66 AND 66 + 10 AND instructor.name LIKE '%Nicole Appleberry%' AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id AND semester.semester = 'FA' AND semester.semester_id = course_offering.semester AND semester.year = 2016
+hard gold: SELECT song_name FROM singer WHERE age  >  (SELECT avg(age) FROM singer)
+
+index: 14
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT song_name FROM singer WHERE age  >  (SELECT avg(age) FROM singer)
+
+index: 15
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHOENIX' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SFO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000
+
+index: 16
+db_id: concert_singer
+medium pred: SELECT COUNT(DISTINCT flight.flight_id) FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND flight.airline_code = 'EA'
+medium gold: SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000
+
+index: 17
+db_id: concert_singer
+medium pred: SELECT population FROM city WHERE city_name = 'boulder'
+medium gold: select max(capacity), average from stadium
+
+index: 18
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, airport_service AS AIRPORT_SERVICE_2, city AS CITY_0, city AS CITY_1, city AS CITY_2, flight, flight_stop WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'WESTCHESTER COUNTY' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'CHICAGO' AND CITY_2.city_code = AIRPORT_SERVICE_2.city_code AND CITY_2.city_name = 'ONTARIO' AND flight_stop.stop_airport = AIRPORT_SERVICE_1.airport_code AND flight.flight_id = flight_stop.flight_id AND flight.to_airport = AIRPORT_SERVICE_2.airport_code) AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: select avg(capacity) ,  max(capacity) from stadium
+
+index: 19
+db_id: concert_singer
+medium pred: SELECT DISTINCT class_of_service.class_type FROM airline, class_of_service WHERE airline.airline_code = 'TW' AND class_of_service.booking_class = airline.airline_code
+medium gold: SELECT name ,  capacity FROM stadium ORDER BY average DESC LIMIT 1
+
+index: 20
+db_id: concert_singer
+medium pred: SELECT DISTINCT fare.one_direction_cost FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, fare_basis WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND fare.fare_basis_code = fare_basis.fare_basis_code AND fare.one_direction_cost < 1000 AND fare_basis.class_type = 'ECONOMY' AND fare_basis.season = 'WINTER' AND fare_basis.night = 'Y' AND fare_basis.basis_days = '14' AND fare_basis.fare_airline = 'DL' AND flight_fare.fare_id = fare.fare_id AND flight_fare.flight_id IN (SELECT FLIGHTalias1.flight_id FROM airport_service AS AIRPORT_SERVICE_2, airport_service AS AIRPORT_SERVICE_3, city AS CITY_2, city AS CITY_3, flight AS FLIGHTalias1, flight AS FLIGHTalias2, flight_stop AS FLIGHT_STOPalias1, flight_stop AS FLIGHT_STOPalias2 WHERE CITY_2.city_code = AIRPORT_SERVICE_2.city_code AND CITY_2.city_name = 'ATLANTA' AND CITY_3.city_code = AIRPORT_SERVICE_3.city_code AND CITY_3.city_name = 'BOSTON' AND FLIGHT_STOPalias1.flight_id = FLIGHTalias1.flight_id AND FLIGHT_STOPalias1.stop_airport = AIRPORT_SERVICE_2.airport_code AND FLIGHT_STOPalias2.flight_id = FLI
+medium gold: SELECT name ,  capacity FROM stadium ORDER BY average DESC LIMIT 1
+
+index: 21
+db_id: concert_singer
+medium pred: SELECT DISTINCT course.department, course.name, course.number, semester.semester FROM course, course_offering, semester WHERE course_offering.course_id = course.course_id AND course.department LIKE '%theory%' AND semester.semester IN ('WN', 'FA') AND semester.semester_id = course_offering.semester AND semester.year = 2011
+medium gold: SELECT count(*) FROM concert WHERE YEAR  =  2014 OR YEAR  =  2015
+
+index: 22
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MONTREAL' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'NASHVILLE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.airline_code = 'YX'
+medium gold: SELECT count(*) FROM concert WHERE YEAR  =  2014 OR YEAR  =  2015
+
+index: 23
+db_id: concert_singer
+medium pred: SELECT river_name FROM river WHERE length = (SELECT MAX(RIVERalias1.length) FROM river AS RIVERalias1)
+medium gold: SELECT T2.name ,  count(*) FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id GROUP BY T1.stadium_id
+
+index: 24
+db_id: concert_singer
+medium pred: SELECT density FROM state WHERE area = (SELECT MIN(STATEalias1.area) FROM state AS STATEalias1)
+medium gold: SELECT T2.name ,  count(*) FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id GROUP BY T1.stadium_id
+
+index: 25
+db_id: concert_singer
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.airline_code = 'DL'
+extra gold: SELECT T2.name ,  T2.capacity FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  >=  2014 GROUP BY T2.stadium_id ORDER BY count(*) DESC LIMIT 1
+
+index: 26
+db_id: concert_singer
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MONTREAL' AND date_day.day_number = 25 AND date_day.month_number = 4 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'LAS VEGAS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.airline_code = 'AS'
+extra gold: select t2.name ,  t2.capacity from concert as t1 join stadium as t2 on t1.stadium_id  =  t2.stadium_id where t1.year  >  2013 group by t2.stadium_id order by count(*) desc limit 1
+
+index: 27
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'OAKLAND' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SALT LAKE CITY' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT YEAR FROM concert GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
+
+index: 28
+db_id: concert_singer
+hard pred: SELECT DISTINCT course_offering.friday FROM course, course_offering, semester, student, student_record WHERE course.course_id = course_offering.course_id AND course.department = 'SAC' AND course.number = 305 AND semester.semester = 'FA' AND semester.semester_id = course_offering.semester AND student.student_id = student_record.student_id AND student_record.course_id = course_offering.course_id AND student_record.semester = semester.semester_id AND student_record.grade = 'A' AND student_record.how = 'W' AND student.major LIKE '%EECS%' AND student.student_id = 0
+hard gold: SELECT YEAR FROM concert GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
+
+index: 29
+db_id: concert_singer
+hard pred: SELECT DISTINCT course.department, course.name, course.number, semester.semester FROM course, course_offering, program_course, semester WHERE course_offering.course_id = course.course_id AND program_course.category LIKE '%MDE%' AND program_course.course_id = course.course_id AND semester.semester IN ('FA', 'WN') AND semester.semester_id = course_offering.semester AND semester.year = 2016
+hard gold: SELECT name FROM stadium WHERE stadium_id NOT IN (SELECT stadium_id FROM concert)
+
+index: 30
+db_id: concert_singer
+hard pred: SELECT COUNT(*) > 0 FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'SPANISH' AND course.number = 299 AND semester.semester = 'FA' AND semester.semester_id = course_offering.semester AND semester.year = 2016
+hard gold: SELECT name FROM stadium WHERE stadium_id NOT IN (SELECT stadium_id FROM concert)
+
+index: 31
+db_id: concert_singer
+hard pred: SELECT city_name FROM city WHERE state_name = 'virginia'
+hard gold: SELECT country FROM singer WHERE age  >  40 INTERSECT SELECT country FROM singer WHERE age  <  30
+
+index: 32
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport AS AIRPORT_0, airport AS AIRPORT_1, airline, airline_service, flight, flight_fare, fare WHERE AIRPORT_0.airport_code = 'ATLANTA' AND AIRPORT_1.airport_code = 'DENVER' AND airline.airline_code = 'YIAT' AND airline_service.airline_code = airline.airline_code AND flight.airline_code = airline.airline_code AND flight.from_airport = AIRPORT_0.airport_code AND flight_fare.fare_id = fare.fare_id AND flight.flight_id = flight_fare.flight_id AND fare.fare_basis_code = 'CZYIY' AND flight.flight_number = 43 AND flight.meal_code = 'COACH'
+hard gold: SELECT name FROM stadium EXCEPT SELECT T2.name FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  =  2014
+
+index: 33
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'COLUMBUS' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MILWAUKEE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT name FROM stadium EXCEPT SELECT T2.name FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  =  2014
+
+index: 34
+db_id: concert_singer
+medium pred: SELECT DISTINCT course.department, course.name, course.number, semester.semester, semester.year FROM course, course_offering, semester WHERE course_offering.course_id = course.course_id AND semester.semester IN (1, 2, 3, 4, 5, 6) AND semester.semester_id = course_offering.semester AND semester.year = 2016
+medium gold: SELECT T2.concert_name ,  T2.theme ,  count(*) FROM singer_in_concert AS T1 JOIN concert AS T2 ON T1.concert_id  =  T2.concert_id GROUP BY T2.concert_id
+
+index: 35
+db_id: concert_singer
+medium pred: SELECT city_name FROM city WHERE population = (SELECT MAX(CITYalias1.population) FROM city AS CITYalias1)
+medium gold: select t2.concert_name ,  t2.theme ,  count(*) from singer_in_concert as t1 join concert as t2 on t1.concert_id  =  t2.concert_id group by t2.concert_id
+
+index: 36
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHILADELPHIA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT T2.name ,  count(*) FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id GROUP BY T2.singer_id
+
+index: 37
+db_id: concert_singer
+medium pred: SELECT DISTINCT course.department, course.name, course.number, program_course.workload, program_course.workload FROM course, program_course WHERE program_course.category LIKE '%MDE%' AND program_course.course_id = course.course_id AND program_course.workload = (SELECT MIN(PROGRAM_COURSEalias1.workload) FROM program_course AS PROGRAM_COURSEalias1 WHERE PROGRAM_COURSEalias1.category LIKE '%MDE%')
+medium gold: SELECT T2.name ,  count(*) FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id GROUP BY T2.singer_id
+
+index: 38
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND date_day.day_number = 11 AND date_day.month_number = 11 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: SELECT T2.name FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id JOIN concert AS T3 ON T1.concert_id  =  T3.concert_id WHERE T3.year  =  2014
+
+index: 39
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT T2.name FROM singer_in_concert AS T1 JOIN singer AS T2 ON T1.singer_id  =  T2.singer_id JOIN concert AS T3 ON T1.concert_id  =  T3.concert_id WHERE T3.year  =  2014
+
+index: 40
+db_id: concert_singer
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'LOS ANGELES' AND date_day.day_number = 26 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND flight.departure_time > 1700 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: SELECT name ,  country FROM singer WHERE song_name LIKE '%Hey%'
+
+index: 41
+db_id: concert_singer
+medium pred: SELECT population FROM city WHERE city_name = (SELECT DISTINCT capital FROM state WHERE state_name = 'texas')
+medium gold: SELECT name ,  country FROM singer WHERE song_name LIKE '%Hey%'
+
+index: 42
+db_id: concert_singer
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DALLAS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015
+
+index: 43
+db_id: concert_singer
+extra pred: SELECT DISTINCT department, name, number FROM course WHERE (description LIKE '%topic0%' OR name LIKE '%topic0%') AND department = 'EECS'
+extra gold: SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2014 INTERSECT SELECT T2.name ,  T2.location FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.Year  =  2015
+
+index: 44
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND date_day.day_number = 25 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND flight.departure_time > 600 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: select count(*) from concert where stadium_id = (select stadium_id from stadium order by capacity desc limit 1)
+
+index: 45
+db_id: concert_singer
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, food_service, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'OAKLAND' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND food_service.meal_code = flight.meal_code AND food_service.meal_description = 'BREAKFAST') AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: select count(*) from concert where stadium_id = (select stadium_id from stadium order by capacity desc limit 1)
+
+index: 46
+db_id: pets_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM pets WHERE weight  >  10
+
+index: 47
+db_id: pets_1
+easy pred: SELECT DISTINCT flight.flight_id, flight.departure_time FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS FORT WORTH' AND flight.departure_time > 1800 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT count(*) FROM pets WHERE weight  >  10
+
+index: 48
+db_id: pets_1
+medium pred: SELECT COUNT(city_name) FROM city WHERE population > 150000 AND state_name = 'texas'
+medium gold: SELECT weight FROM pets ORDER BY pet_age LIMIT 1
+
+index: 49
+db_id: pets_1
+medium pred: SELECT DISTINCT ground_service.transport_type FROM city, ground_service WHERE city.city_name = 'ST. LOUIS' AND ground_service.city_code = city.city_code
+medium gold: SELECT weight FROM pets ORDER BY pet_age LIMIT 1
+
+index: 50
+db_id: pets_1
+medium pred: SELECT SUM(area) FROM state
+medium gold: SELECT max(weight) ,  petType FROM pets GROUP BY petType
+
+index: 51
+db_id: pets_1
+medium pred: SELECT DISTINCT airport_code FROM airport
+medium gold: SELECT max(weight) ,  petType FROM pets GROUP BY petType
+
+index: 52
+db_id: pets_1
+medium pred: SELECT DISTINCT course.department, course.name, course.number FROM course, course_offering, program_course, student, student_record WHERE course.course_id = course_offering.course_id AND course_offering.semester = (SELECT MAX(SEMESTERalias1.semester) FROM semester AS SEMESTERalias1 WHERE SEMESTERalias1.semester LIKE '%WN%%') AND program_course.course_id = course.course_id AND program_course.category LIKE '%computing infrastructure%' AND student.student_id = student_record.student_id AND student_record.course_id = course.course_id AND student.student_id = 0
+medium gold: SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.age  >  20
+
+index: 53
+db_id: pets_1
+medium pred: SELECT city_name FROM city WHERE state_name IN (SELECT RIVERalias0.traverse FROM river AS RIVERalias0 WHERE RIVERalias0.river_name = 'mississippi')
+medium gold: SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.age  >  20
+
+index: 54
+db_id: pets_1
+hard pred: SELECT restaurant.name FROM location, restaurant WHERE restaurant.food_type = 'american' AND location.city_name = 'san francisco' AND restaurant.id = location.restaurant_id AND restaurant.rating = (SELECT MAX(RESTAURANTalias1.rating) FROM location AS LOCATIONalias1, restaurant AS RESTAURANTalias1 WHERE LOCATIONalias1.city_name = 'san francisco' AND RESTAIRANTalias1.food_type = 'american' AND RESTAIRANTalias1.id = LOCATIONalias1.restaurant_id)
+hard gold: SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'
+
+index: 55
+db_id: pets_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHILADELPHIA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'
+
+index: 56
+db_id: pets_1
+easy pred: SELECT DISTINCT semester.semester FROM course INNER JOIN program_course ON program_course.course_id = course.course_id INNER JOIN semester ON semester.semester_id = course.num_semesters WHERE course.department = 'computational science' AND (semester.semester IN ('Winter', 'Fall') AND semester.year = 2010) AND program_course.program_id = 2
+easy gold: SELECT count(DISTINCT pettype) FROM pets
+
+index: 57
+db_id: pets_1
+easy pred: SELECT DISTINCT paper.paperid FROM paper, venue WHERE paper.title LIKE '%Class consistent multi-modal fusion with binary features applied to RGB-D Object Dataset%' AND paper.year = 2016 AND venue.venueid = paper.venueid AND venue.venuename = 'CVPR'
+easy gold: SELECT count(DISTINCT pettype) FROM pets
+
+index: 58
+db_id: pets_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ST. PETERSBURG' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'TORONTO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.stops = 0
+extra gold: SELECT DISTINCT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' OR T3.pettype  =  'dog'
+
+index: 59
+db_id: pets_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PITTSBURGH' AND fare.fare_basis_code = 'ECONOMY' AND fare.one_direction_cost = (SELECT MIN(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'DENVER' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'PITTSBURGH' AND FAREalias1.from_airport = AIRPORT_SERVICEalias2.airport_code AND FAREalias1.to_airport = AIRPORT_SERVICEalias3.airport_code AND FAREalias1.fare_basis_code = 'ECONOMY') AND flight.airline_code = 'AA' AND flight.flight_fare = fare.fare_id AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.flight_id = fare.flight_id
+extra gold: SELECT DISTINCT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' OR T3.pettype  =  'dog'
+
+index: 60
+db_id: pets_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND date_day.day_number = 23 AND date_day.month_number = 8 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHILADELPHIA' AND flight.departure_time > 1200 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+extra gold: select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'cat' intersect select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'dog'
+
+index: 61
+db_id: pets_1
+extra pred: SELECT COUNT(DISTINCT (publication.title)) FROM author, journal, organization, publication, writes WHERE organization.name = 'University of Michigan' AND journal.name = 'VLDB' AND publication.year > 2000 AND publication.jid = journal.jid AND writes.aid = author.aid AND writes.pid = publication.pid AND organization.oid = author.oid
+extra gold: SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' INTERSECT SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog'
+
+index: 62
+db_id: pets_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN JOSE' AND date_day.day_number = 18 AND date_day.month_number = 5 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'TACOMA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+extra gold: SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')
+
+index: 63
+db_id: pets_1
+extra pred: SELECT DISTINCT day_name FROM days WHERE days_code = 'SA'
+extra gold: SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')
+
+index: 64
+db_id: pets_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (((date_day.day_number = 25 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code) AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.departure_time BETWEEN 1200 AND 1800
+hard gold: SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'
+
+index: 65
+db_id: pets_1
+hard pred: SELECT DISTINCT COUNT(publication.title) FROM author, publication, writes WHERE author.name = 'H. V. Jagadish' AND writes.aid = author.aid AND writes.pid = publication.pid
+hard gold: SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'
+
+index: 66
+db_id: pets_1
+extra pred: SELECT COUNT(DISTINCT course.course_id, semester.semester) FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'department0' AND course.number BETWEEN 100 AND 100 + 100 AND semester.semester IN ('SP', 'SS') AND semester.semester_id = course_offering.semester AND semester.year = 2016
+extra gold: SELECT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog' AND T1.stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')
+
+index: 67
+db_id: pets_1
+extra pred: SELECT DISTINCT ground_service.transport_type FROM city, ground_service WHERE city.city_name = 'DENVER' AND ground_service.city_code = city.city_code AND ground_service.transport_type = 'RENTAL CAR'
+extra gold: SELECT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog' AND T1.stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')
+
+index: 68
+db_id: pets_1
+medium pred: SELECT DISTINCT name, number FROM course WHERE credits = 12 AND department = 'EECS'
+medium gold: SELECT pettype ,  weight FROM pets ORDER BY pet_age LIMIT 1
+
+index: 69
+db_id: pets_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SAN FRANCISCO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'NEW YORK' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.stops = 0
+medium gold: SELECT pettype ,  weight FROM pets ORDER BY pet_age LIMIT 1
+
+index: 70
+db_id: pets_1
+medium pred: SELECT DISTINCT airline_code FROM airline WHERE airline_code = 'KW'
+medium gold: SELECT petid ,  weight FROM pets WHERE pet_age  >  1
+
+index: 71
+db_id: pets_1
+medium pred: SELECT DISTINCT instructor.name FROM instructor INNER JOIN offering_instructor ON offering_instructor.instructor_id = instructor.instructor_id INNER JOIN student_record ON student_record.offering_id = offering_instructor.offering_id INNER JOIN student ON student.student_id = student_record.student_id WHERE student_record.grade = 'B' AND student.minor = 'RCSSCI'
+medium gold: SELECT petid ,  weight FROM pets WHERE pet_age  >  1
+
+index: 72
+db_id: pets_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype
+
+index: 73
+db_id: pets_1
+medium pred: SELECT DISTINCT journalid FROM paper WHERE year = 2011 GROUP BY journalid
+medium gold: SELECT avg(pet_age) ,  max(pet_age) ,  pettype FROM pets GROUP BY pettype
+
+index: 74
+db_id: pets_1
+medium pred: SELECT DISTINCT course.department, course.name, course.number FROM area, course, program, program_course WHERE area.course_id = course.course_id AND program_course.category LIKE '%CS%' AND program_course.course_id = course.course_id AND program.name LIKE '%CS%' AND program.program_id = program_course.program_id AND semester.semester = 'FA' AND semester.semester_id = course.num_semesters AND semester.year = 2016
+medium gold: SELECT avg(weight) ,  pettype FROM pets GROUP BY pettype
+
+index: 75
+db_id: pets_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WESTCHESTER COUNTY' AND fare.one_direction_cost = (SELECT MAX(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'DETROIT' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'WESTCHESTER COUNTY' AND FAREalias1.one_direction_cost = FAREalias2.one_direction_cost AND flight.flight_id = FAREalias1.flight_id AND flight.to_airport = AIRPORT_SERVICEalias3.airport_code)) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DETROIT' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND fare.flight_id = flight.flight_id AND fare.round_trip_required = 'NO'
+medium gold: SELECT avg(weight) ,  pettype FROM pets GROUP BY pettype
+
+index: 76
+db_id: pets_1
+medium pred: SELECT DISTINCT credits FROM course WHERE department = 'EECS' AND number = 417
+medium gold: SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid
+
+index: 77
+db_id: pets_1
+medium pred: SELECT DISTINCT domain.name FROM conference, domain, domain_conference WHERE conference.name = 'VLDB' AND domain_conference.cid = conference.cid AND domain.did = domain_conference.did
+medium gold: SELECT DISTINCT T1.fname ,  T1.age FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid
+
+index: 78
+db_id: pets_1
+medium pred: SELECT COUNT(*) > 0 FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'LHC' AND course.number = 688 AND semester.semester = 'Fall' AND semester.semester_id = course_offering.semester AND semester.year = 2000
+medium gold: SELECT T2.petid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.Lname  =  'Smith'
+
+index: 79
+db_id: pets_1
+medium pred: SELECT DISTINCT paper.paperid FROM author, keyphrase, paper, paperkeyphrase, writes WHERE author.authorname = 'li dong' AND keyphrase.keyphrasename = 'semantic parsing' AND paperkeyphrase.keyphraseid = keyphrase.keyphraseid AND paper.paperid = paperkeyphrase.paperid AND writes.authorid = author.authorid AND writes.paperid = paper.paperid
+medium gold: SELECT T2.petid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.Lname  =  'Smith'
+
+index: 80
+db_id: pets_1
+medium pred: SELECT DISTINCT name, number FROM course WHERE department = 'PEDDENT' AND credits = 8
+medium gold: SELECT count(*) ,  T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid
+
+index: 81
+db_id: pets_1
+medium pred: SELECT DISTINCT author.authorname FROM author, paper, writes WHERE paper.title LIKE '%Semantic Spaces%' AND paper.year = 2016 AND writes.authorid = author.authorid AND writes.paperid = paper.paperid
+medium gold: select count(*) ,  t1.stuid from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid group by t1.stuid
+
+index: 82
+db_id: pets_1
+medium pred: SELECT DISTINCT course_offering.start_time, course.department, course.number, instructor.name, offering_instructor.offering_id, offering_instructor.instructor_id FROM course INNER JOIN course_offering ON course.course_id = course_offering.course_id INNER JOIN instructor ON course_offering.instructor_id = instructor.instructor_id INNER JOIN offering_instructor ON course_offering.offering_id = offering_instructor.offering_id WHERE course.department = 'EECS' AND course.number = 463 AND instructor.name = 'Geoffrey Bankowski'
+medium gold: SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1
+
+index: 83
+db_id: pets_1
+medium pred: SELECT DISTINCT fare.fare_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight_fare WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BWI' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND fare.round_trip_cost = (SELECT MIN(FAREalias1.round_trip_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1, flight_fare AS FLIGHT_FAREalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'BWI' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = CITY_1.city_name AND FAREalias1.round_trip_cost = FAREalias2.round_trip_cost AND FLIGHT_FAREalias1.fare_id = FAREalias1.fare_id AND FLIGHT_FAREalias1.flight_id = flight.flight_id AND flight_fare.flight_id = FLIGHT_FAREalias1.flight_id AND flight.to_airport = AIRPORT_SERVICEalias3.airport_code) AND fare.round_trip_required = 'Y' AND flight_fare.flight_id = flight.flight_id
+medium gold: SELECT T1.fname ,  T1.sex FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid GROUP BY T1.stuid HAVING count(*)  >  1
+
+index: 84
+db_id: pets_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND date_day.day_number = 7 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: SELECT T1.lname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pet_age  =  3 AND T3.pettype  =  'cat'
+
+index: 85
+db_id: pets_1
+hard pred: SELECT keyword.keyword FROM author, keyword, publication, publication_keyword WHERE author.name = 'H. V. Jagadish' AND publication_keyword.kid = keyword.kid AND publication.pid = publication_keyword.pid AND publication.title LIKE '%YU%' GROUP BY keyword.keyword HAVING COUNT(DISTINCT (publication.title)) > 10
+hard gold: SELECT T1.lname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pet_age  =  3 AND T3.pettype  =  'cat'
+
+index: 86
+db_id: pets_1
+extra pred: SELECT keyword.keyword FROM conference, keyword, publication, publication_keyword WHERE conference.name = 'VLDB' AND publication_keyword.kid = keyword.kid AND publication.cid = conference.cid AND publication.pid = publication_keyword.pid GROUP BY keyword.keyword HAVING COUNT(DISTINCT (publication.title)) > 100
+extra gold: select avg(age) from student where stuid not in (select stuid from has_pet)
+
+index: 87
+db_id: pets_1
+extra pred: SELECT COUNT(DISTINCT (movie.title)), movie.release_year FROM actor, cast, movie WHERE actor.name = 'Brad Pitt' AND cast.aid = actor.aid AND movie.mid = cast.msid GROUP BY movie.release_year
+extra gold: select avg(age) from student where stuid not in (select stuid from has_pet)
+
+index: 88
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SAN FRANCISCO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DALLAS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.airline_code = 'CO'
+easy gold: SELECT count(*) FROM CONTINENTS;
+
+index: 89
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DALLAS' AND date_day.day_number = 15 AND date_day.month_number = 6 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT count(*) FROM CONTINENTS;
+
+index: 90
+db_id: car_1
+medium pred: SELECT border FROM border_info WHERE state_name IN (SELECT DISTINCT city.state_name FROM city GROUP BY city.state_name ORDER BY COUNT(city.state_name) DESC LIMIT 1)
+medium gold: SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;
+
+index: 91
+db_id: car_1
+medium pred: SELECT DISTINCT ground_service.transport_type FROM city, ground_service WHERE city.city_name = 'ATLANTA' AND ground_service.city_code = city.city_code
+medium gold: SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;
+
+index: 92
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'OAKLAND' AND date_day.day_number = 23 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHILADELPHIA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT count(*) FROM COUNTRIES;
+
+index: 93
+db_id: car_1
+easy pred: SELECT DISTINCT airline.airline_code FROM airline, airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CHARLOTTE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'NEWARK' AND flight.airline_code = airline.airline_code AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM COUNTRIES;
+
+index: 94
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT T1.FullName ,  T1.Id ,  count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id;
+
+index: 95
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT T1.FullName ,  T1.Id ,  count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id;
+
+index: 96
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.departure_time < 2000
+hard gold: SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.horsepower ASC LIMIT 1;
+
+index: 97
+db_id: car_1
+hard pred: SELECT COUNT(DISTINCT instructor.instructor_id) FROM course INNER JOIN course_offering ON course.course_id = course_offering.course_id INNER JOIN instructor ON offering_instructor.instructor_id = instructor.instructor_id INNER JOIN offering_instructor ON course_offering.offering_id = offering_instructor.offering_id WHERE course.department = 'MEDADM' AND course.number = 571 AND semester.semester = 'Winter' AND semester.semester_id = course_offering.semester_id AND semester.year = 2013
+hard gold: SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.horsepower ASC LIMIT 1;
+
+index: 98
+db_id: car_1
+extra pred: SELECT COUNT(*) > 0 FROM course AS CRS1, course AS CRS2, course_prerequisite WHERE CRS1.course_id = course_prerequisite.pre_course_id AND CRS1.department = 'DHYGRACK' AND CRS1.number = 685 AND CRS2.course_id = course_prerequisite.course_id AND CRS2.department = 'DHYGRACK' AND CRS2.number = 689
+extra gold: SELECT T1.model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Weight  <  (SELECT avg(Weight) FROM CARS_DATA)
+
+index: 99
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, day, flight WHERE (((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND date_day.day_number = 21 AND date_day.month_number = 1 AND date_day.year = 1991 AND day.day_name = 'MONDAY' AND date_day.day_number = day.day_number) AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.flight_days = date_day.day_number
+extra gold: SELECT T1.model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Weight  <  (SELECT avg(Weight) FROM CARS_DATA)
+
+index: 100
+db_id: car_1
+extra pred: SELECT DISTINCT ground_service.transport_type FROM city, ground_service WHERE city.city_name = 'BOSTON' AND ground_service.city_code = city.city_code
+extra gold: SELECT DISTINCT T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model JOIN CARS_DATA AS T4 ON T3.MakeId  =  T4.id WHERE T4.year  =  '1970';
+
+index: 101
+db_id: car_1
+extra pred: SELECT DISTINCT course.department, course.name, course.number, program_course.category, program_course.workload FROM course, program_course WHERE program_course.category LIKE '%Other%' AND course.course_id = program_course.course_id AND course.department = 'EECS' AND course.number BETWEEN 220 AND 229
+extra gold: SELECT DISTINCT T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model JOIN CARS_DATA AS T4 ON T3.MakeId  =  T4.id WHERE T4.year  =  '1970';
+
+index: 102
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND MONTH(flight.departure_time) = 9 AND YEAR(flight.departure_time) = 17
+extra gold: SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);
+
+index: 103
+db_id: car_1
+extra pred: SELECT DISTINCT airline.airline_code FROM airline, airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SAN FRANCISCO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND flight.airline_code = airline.airline_code AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);
+
+index: 104
+db_id: car_1
+hard pred: SELECT COUNT(border) FROM border_info WHERE border IN (SELECT BORDER_INFOalias1.border FROM border_info AS BORDER_INFOalias1 WHERE BORDER_INFOalias1.state_name = 'new mexico') AND state_name = 'colorado'
+hard gold: SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.model  =  T2.model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.id WHERE T3.year  >  1980;
+
+index: 105
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND date_day.day_number = 25 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.departure_time BETWEEN time_interval.begin_time AND time_interval.end_time AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND time_interval.period = 'PEAK'
+hard gold: SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.model  =  T2.model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.id WHERE T3.year  >  1980;
+
+index: 106
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.departure_time > 1600 AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: SELECT T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.continent JOIN car_makers AS T3 ON T2.CountryId  =  T3.Country GROUP BY T1.Continent;
+
+index: 107
+db_id: car_1
+hard pred: SELECT DISTINCT ground_service.transport_type FROM city AS CITY_0, city AS CITY_1, ground_service WHERE CITY_0.city_name = 'OAKLAND' AND CITY_1.city_name = 'SAN FRANCISCO' AND ground_service.city_code = CITY_0.city_code AND ground_service.city_code = CITY_1.city_code
+hard gold: SELECT T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.continent JOIN car_makers AS T3 ON T2.CountryId  =  T3.Country GROUP BY T1.Continent;
+
+index: 108
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service, city, flight, flight_stop, state WHERE city.city_code = airport_service.city_code AND city.city_name = 'CHICAGO' AND flight_stop.stop_days = (SELECT days.days_code FROM days WHERE days.day_name = 'SATURDAY') AND flight.flight_id = flight_stop.flight_id AND flight.departure_time BETWEEN 0 AND 1200 AND flight.from_airport = airport_service.airport_code AND state.state_code = city.state_code AND state.state_name = 'IL'
+extra gold: SELECT T2.CountryName FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId GROUP BY T1.Country ORDER BY Count(*) DESC LIMIT 1;
+
+index: 109
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'HOUSTON' AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS' AND flight.departure_airline = 'AA' AND flight.departure_flight_number = 1 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.flight_days = 3 AND flight.flight_number = 1
+extra gold: SELECT T2.CountryName FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId GROUP BY T1.Country ORDER BY Count(*) DESC LIMIT 1;
+
+index: 110
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND date_day.day_number = 29 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: select count(*) ,  t2.fullname from model_list as t1 join car_makers as t2 on t1.maker  =  t2.id group by t2.id;
+
+index: 111
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, airport_service AS AIRPORT_SERVICE_2, airport_service AS AIRPORT_SERVICE_3, city AS CITY_0, city AS CITY_1, city AS CITY_2, city AS CITY_3, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS FORT WORTH' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.transport_type = 'DIRECT'
+medium gold: SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;
+
+index: 112
+db_id: car_1
+medium pred: SELECT COUNT(*) > 0 FROM course, program_course WHERE course.department = 'EDUC' AND course.number = 831 AND program_course.category LIKE '%Core%' AND program_course.course_id = course.course_id
+medium gold: SELECT T1.Accelerate FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Make  =  'amc hornet sportabout (sw)';
+
+index: 113
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airline, airport_service, city, date_day, days, flight WHERE (date_day.day_number = 23 AND date_day.month_number = 6 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = airport_service.airport_code AND flight.airline_code = airline.airline_code AND flight.airline_flight = '1120' AND flight.flight_number = '102' AND flight.stops = '0' AND flight.time_elapsed BETWEEN 200 AND 300) AND airport_service.city_code = city.city_code AND city.city_name = 'SAN FRANCISCO' AND class_of_service.booking_class = 'FIRST' AND flight.meal_code = food_service.meal_code AND food_service.meal_number = class_of_service.rank
+medium gold: SELECT T1.Accelerate FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Make  =  'amc hornet sportabout (sw)';
+
+index: 114
+db_id: car_1
+medium pred: SELECT DISTINCT name, number FROM course WHERE credits = 6 AND department = 'EECS'
+medium gold: SELECT count(*) FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId WHERE T2.CountryName  =  'france';
+
+index: 115
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: SELECT count(*) FROM CAR_MAKERS AS T1 JOIN COUNTRIES AS T2 ON T1.Country  =  T2.CountryId WHERE T2.CountryName  =  'france';
+
+index: 116
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service, city, flight WHERE city.city_code = airport_service.city_code AND city.city_name = 'ATLANTA' AND flight.from_airport = airport_service.airport_code
+hard gold: SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';
+
+index: 117
+db_id: car_1
+hard pred: SELECT DISTINCT department, name, number FROM course WHERE (description LIKE '%topic0%' OR name LIKE '%topic0%') AND department = 'EECS'
+hard gold: SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';
+
+index: 118
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT avg(mpg) FROM CARS_DATA WHERE Cylinders  =  4;
+
+index: 119
+db_id: car_1
+easy pred: SELECT COUNT(*) > 0 FROM course, program_course WHERE course.department = 'KINESLGY' AND course.number = 995 AND program_course.category LIKE '%Core%' AND program_course.course_id = course.course_id
+easy gold: SELECT avg(mpg) FROM CARS_DATA WHERE Cylinders  =  4;
+
+index: 120
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: select min(weight) from cars_data where cylinders  =  8 and year  =  1974
+
+index: 121
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service, city, flight WHERE city.city_code = airport_service.city_code AND city.city_name = 'ONTARIO' AND flight.from_airport = airport_service.airport_code
+medium gold: select min(weight) from cars_data where cylinders  =  8 and year  =  1974
+
+index: 122
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SEATTLE' AND date_day.day_number = 26 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CHICAGO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.departure_time BETWEEN 0 AND 1200
+medium gold: SELECT Maker ,  Model FROM MODEL_LIST;
+
+index: 123
+db_id: car_1
+medium pred: SELECT DISTINCT course_offering.start_time, course_offering.end_time, semester.semester, semester.year FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'FRENCH' AND course.number = 490 AND semester.semester_id = course_offering.semester AND semester.semester = 'spring' AND semester.year = 2016
+medium gold: SELECT Maker ,  Model FROM MODEL_LIST;
+
+index: 124
+db_id: car_1
+medium pred: SELECT DISTINCT COUNT(paper.paperid) FROM author, paper, writes WHERE author.authorname = 'Luke Campbell' AND paper.year = YEAR(CURDATE()) - 1 AND writes.authorid = author.authorid AND writes.paperid = paper.paperid
+medium gold: SELECT T1.CountryName ,  T1.CountryId FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >=  1;
+
+index: 125
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service, city, flight WHERE city.city_code = airport_service.city_code AND city.city_name = 'SEATTLE' AND flight.from_airport = airport_service.airport_code
+medium gold: SELECT T1.CountryName ,  T1.CountryId FROM COUNTRIES AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.CountryId HAVING count(*)  >=  1;
+
+index: 126
+db_id: car_1
+easy pred: SELECT user.name FROM review, user WHERE user.user_id = review.user_id GROUP BY user.name HAVING AVG(review.rating) < 3
+easy gold: SELECT count(*) FROM CARS_DATA WHERE horsepower  >  150;
+
+index: 127
+db_id: car_1
+easy pred: SELECT state_name FROM highlow WHERE highest_elevation = (SELECT MAX(HIGHLOWalias1.highest_elevation) FROM highlow AS HIGHLOWalias1)
+easy gold: SELECT count(*) FROM CARS_DATA WHERE horsepower  >  150;
+
+index: 128
+db_id: car_1
+medium pred: SELECT DISTINCT course.department, course.name, course.number, program_course.workload, program_course.workload FROM course, program_course WHERE program_course.category LIKE '%Other%' AND program_course.course_id = course.course_id AND program_course.workload = (SELECT MIN(PROGRAM_COURSEalias1.workload) FROM program_course AS PROGRAM_COURSEalias1 WHERE PROGRAM_COURSEalias1.category LIKE '%Other%')
+medium gold: SELECT avg(Weight) ,  YEAR FROM CARS_DATA GROUP BY YEAR;
+
+index: 129
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (((((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'LOS ANGELES' AND date_day.day_number = 3 AND date_day.month_number = 6 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.departure_time BETWEEN 1700 AND 2000) AND flight.airline_code = 'AIRLINE_0') AND flight.flight_number = 13) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: SELECT avg(Weight) ,  YEAR FROM CARS_DATA GROUP BY YEAR;
+
+index: 130
+db_id: car_1
+extra pred: SELECT DISTINCT airline_code FROM airline
+extra gold: SELECT T1.CountryName FROM COUNTRIES AS T1 JOIN CONTINENTS AS T2 ON T1.Continent  =  T2.ContId JOIN CAR_MAKERS AS T3 ON T1.CountryId  =  T3.Country WHERE T2.Continent  =  'europe' GROUP BY T1.CountryName HAVING count(*)  >=  3;
+
+index: 131
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'TORONTO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: SELECT T1.CountryName FROM COUNTRIES AS T1 JOIN CONTINENTS AS T2 ON T1.Continent  =  T2.ContId JOIN CAR_MAKERS AS T3 ON T1.CountryId  =  T3.Country WHERE T2.Continent  =  'europe' GROUP BY T1.CountryName HAVING count(*)  >=  3;
+
+index: 132
+db_id: car_1
+extra pred: SELECT COUNT(state_name) FROM state
+extra gold: SELECT T2.horsepower ,  T1.Make FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.cylinders  =  3 ORDER BY T2.horsepower DESC LIMIT 1;
+
+index: 133
+db_id: car_1
+extra pred: SELECT DISTINCT COUNT(paper.paperid) FROM paper, venue WHERE venue.venueid = paper.venueid AND venue.venuename = 'sigir'
+extra gold: SELECT T2.horsepower ,  T1.Make FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.cylinders  =  3 ORDER BY T2.horsepower DESC LIMIT 1;
+
+index: 134
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CLEVELAND' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MEMPHIS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id ORDER BY T2.mpg DESC LIMIT 1;
+
+index: 135
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PITTSBURGH' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: select t1.model from car_names as t1 join cars_data as t2 on t1.makeid  =  t2.id order by t2.mpg desc limit 1;
+
+index: 136
+db_id: car_1
+easy pred: SELECT DISTINCT paperid FROM paper WHERE year = 2014
+easy gold: SELECT avg(horsepower) FROM CARS_DATA WHERE YEAR  <  1980;
+
+index: 137
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DALLAS' AND date_day.day_number = 23 AND date_day.month_number = 8 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'OAKLAND' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: select avg(horsepower) from cars_data where year  <  1980;
+
+index: 138
+db_id: car_1
+medium pred: SELECT DISTINCT course.department, course.name, course.number, semester.semester FROM course, course_tags_count, program_requirement, semester WHERE course_tags_count.course_id = course.course_id AND course_tags_count.inspirational = 1 AND program_requirement.category LIKE '%Other%' AND program_requirement.min_credit = course.credits AND program_requirement.requirement_id = course_tags_count.course_id AND semester.semester IN ('FA', 'WN') AND semester.semester_id = course.semester AND semester.year = 2016
+medium gold: SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';
+
+index: 139
+db_id: car_1
+medium pred: SELECT AVG(checkin.count), checkin.day FROM business, category, checkin WHERE business.name = 'Barrio Cafe' AND category.business_id = business.business_id AND category.category_name = 'restaurant' AND checkin.business_id = business.business_id GROUP BY checkin.day
+medium gold: SELECT avg(T2.edispl) FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T1.Model  =  'volvo';
+
+index: 140
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SALT LAKE CITY' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHOENIX' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code ORDER BY flight.departure_time DESC LIMIT 1
+medium gold: SELECT max(Accelerate) ,  Cylinders FROM CARS_DATA GROUP BY Cylinders;
+
+index: 141
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MIAMI' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'NEW YORK' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.flight_days = 'SATURDAY' AND flight.airline_code = 'FF'
+medium gold: SELECT max(Accelerate) ,  Cylinders FROM CARS_DATA GROUP BY Cylinders;
+
+index: 142
+db_id: car_1
+hard pred: SELECT DISTINCT program_requirement.additional_req, program_requirement.category, program_requirement.min_credit, program.name FROM program, program_requirement WHERE program.name LIKE '%CS-LSA%' AND program.program_id = program_requirement.program_id
+hard gold: SELECT Model FROM CAR_NAMES GROUP BY Model ORDER BY count(*) DESC LIMIT 1;
+
+index: 143
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT Model FROM CAR_NAMES GROUP BY Model ORDER BY count(*) DESC LIMIT 1;
+
+index: 144
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.departure_time = (SELECT MIN(FLIGHTalias1.departure_time) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, flight AS FLIGHTalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'BOSTON' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'SAN FRANCISCO' AND FLIGHTalias1.from_airport = AIRPORT_SERVICEalias2.airport_code AND FLIGHTalias1.to_airport = AIRPORT_SERVICEalias3.airport_code)
+easy gold: SELECT count(*) FROM CARS_DATA WHERE Cylinders  >  4;
+
+index: 145
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'OAKLAND' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM CARS_DATA WHERE Cylinders  >  4;
+
+index: 146
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHOENIX' AND CITY_1.state_code = 'ARIZONA' AND date_day.day_number = 16 AND date_day.month_number = 1 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.departure_time < '1600' AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CHARLOTTE' AND CITY_0.state_code = 'NORTH CAROLINA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.airline_code = 'AA'
+easy gold: SELECT count(*) FROM CARS_DATA WHERE YEAR  =  1980;
+
+index: 147
+db_id: car_1
+easy pred: SELECT DISTINCT ground_service.transport_type FROM airport, airport_service, city, ground_service WHERE airport.airport_code = airport_service.airport_code AND city.city_code = airport_service.city_code AND city.city_name = 'BOS' AND ground_service.airport_code = airport.airport_code AND ground_service.city_code = city.city_code
+easy gold: SELECT count(*) FROM CARS_DATA WHERE YEAR  =  1980;
+
+index: 148
+db_id: car_1
+medium pred: SELECT DISTINCT course_offering.friday, course_offering.monday, course_offering.saturday, course_offering.start_time, course_offering.thursday, course_offering.tuesday, course_offering.wednesday, course_offering.weekdays, semester.semester, semester.year FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'YIDDISH' AND course.number = 531 AND semester.semester_id = course_offering.semester AND semester.semester = 'FA' AND semester.year = 2016
+medium gold: SELECT count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker WHERE T1.FullName  =  'American Motor Company';
+
+index: 149
+db_id: car_1
+medium pred: SELECT COUNT(DISTINCT course.course_id, semester.semester) FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'department0' AND course.number BETWEEN 300 AND 300 + 100 AND semester.semester IN ('SP', 'SS') AND semester.semester_id = course_offering.semester AND semester.year = 2016
+medium gold: SELECT count(*) FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker WHERE T1.FullName  =  'American Motor Company';
+
+index: 150
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MIAMI' AND date_day.day_number = 23 AND date_day.month_number = 7 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MEMPHIS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: SELECT T1.FullName ,  T1.Id FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >  3;
+
+index: 151
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PITTSBURGH' AND date_day.day_number = 22 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.arrival_time < 1700 AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'LOS ANGELES' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND flight.stops = 0
+medium gold: SELECT T1.FullName ,  T1.Id FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >  3;
+
+index: 152
+db_id: car_1
+extra pred: SELECT DISTINCT course.department, course.name, course.number FROM course WHERE course.department = 'EECS' AND course.number IN (388, 301) ORDER BY course.name
+extra gold: SELECT DISTINCT T2.Model FROM CAR_NAMES AS T1 JOIN MODEL_LIST AS T2 ON T1.Model  =  T2.Model JOIN CAR_MAKERS AS T3 ON T2.Maker  =  T3.Id JOIN CARS_DATA AS T4 ON T1.MakeId  =  T4.Id WHERE T3.FullName  =  'General Motors' OR T4.weight  >  3500;
+
+index: 153
+db_id: car_1
+extra pred: SELECT COUNT(*) > 0 FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'ENVIRON' AND course.number = 377 AND instructor.name = 'Dennis Capozza' AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id
+extra gold: SELECT DISTINCT T2.Model FROM CAR_NAMES AS T1 JOIN MODEL_LIST AS T2 ON T1.Model  =  T2.Model JOIN CAR_MAKERS AS T3 ON T2.Maker  =  T3.Id JOIN CARS_DATA AS T4 ON T1.MakeId  =  T4.Id WHERE T3.FullName  =  'General Motors' OR T4.weight  >  3500;
+
+index: 154
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'NASHVILLE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SEATTLE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.flight_id = flight_fare.flight_id
+easy gold: select distinct year from cars_data where weight between 3000 and 4000;
+
+index: 155
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND fare.flight_id = flight.flight_id AND fare.one_direction_cost = (SELECT MAX(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1, flight AS FLIGHTalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'BOSTON' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'PHILADELPHIA' AND FAREalias1.flight_id = FLIGHTalias1.flight_id AND FLIGHTalias1.from_airport = AIRPORT_SERVICEalias2.airport_code AND FLIGHTalias1.to_airport = AIRPORT_SERVICEalias3.airport_code) AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: select distinct year from cars_data where weight between 3000 and 4000;
+
+index: 156
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, airport_service AS AIRPORT_SERVICE_2, city AS CITY_0, city AS CITY_1, city AS CITY_2, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'LOS ANGELES' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'NEWARK' AND CITY_2.city_code = AIRPORT_SERVICE_2.city_code AND CITY_2.city_name = 'CHARLOTTE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.flight_id IN (SELECT FLIGHTalias1.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight AS FLIGHTalias1 WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CHARLOTTE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'LOS ANGELES' AND FLIGHTalias1.from_airport = AIRPORT_SERVICE_0.airport_code AND FLIGHTalias1.to_airport = AIRPORT_SERVICE_1.airport_code)
+medium gold: SELECT T1.horsepower FROM CARS_DATA AS T1 ORDER BY T1.accelerate DESC LIMIT 1;
+
+index: 157
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.departure_time > 1800
+medium gold: SELECT T1.horsepower FROM CARS_DATA AS T1 ORDER BY T1.accelerate DESC LIMIT 1;
+
+index: 158
+db_id: car_1
+extra pred: SELECT DISTINCT fare.fare_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, fare_basis, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND fare.one_direction_cost = (SELECT MIN(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1, fare_basis AS FARE_BASISalias1, flight AS FLIGHTalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'BOSTON' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'PHILADELPHIA' AND FAREalias1.fare_basis_code = FARE_BASISalias1.fare_basis_code AND FAREalias1.one_direction_cost = FARE_BASISalias1.economy AND FLIGHTalias1.flight_id = FAREalias1.flight_id AND FLIGHTalias1.to_airport = AIRPORT_SERVICEalias3.airport_code AND FLIGHTalias1.from_airport = AIRPORT_SERVICEalias2.airport_code) AND fare.round_trip_cost > (SELECT MIN(FAREalias2.round_trip_cost) FROM airport_service AS AIRPORT_SERVICEalias4, airport_service AS AIRPORT_SERVICEalias5, city AS CITYalias4, city AS CITYalias5, fare
+extra gold: SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;
+
+index: 159
+db_id: car_1
+extra pred: SELECT DISTINCT department FROM course WHERE name LIKE '%Honors Anthropology%'
+extra gold: SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;
+
+index: 160
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight, food_service WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND date_day.day_number = 22 AND date_day.month_number = 4 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND food_service.meal_code = flight.meal_code AND food_service.meal_description = 'BREAKFAST' AND flight.flight_id = flight_fare.flight_id AND flight_fare.fare_id = food_service.meal_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: SELECT COUNT(*) FROM CARS_DATA WHERE Accelerate  >  ( SELECT Accelerate FROM CARS_DATA ORDER BY Horsepower DESC LIMIT 1 );
+
+index: 161
+db_id: car_1
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'TORONTO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+hard gold: SELECT COUNT(*) FROM CARS_DATA WHERE Accelerate  >  ( SELECT Accelerate FROM CARS_DATA ORDER BY Horsepower DESC LIMIT 1 );
+
+index: 162
+db_id: car_1
+medium pred: SELECT DISTINCT COUNT(cite.citedpaperid) FROM author, cite, paper, writes WHERE author.authorname = 'Donald Elmazi' AND paper.paperid = cite.citedpaperid AND writes.authorid = author.authorid AND writes.paperid = paper.paperid
+medium gold: select count(*) from countries as t1 join car_makers as t2 on t1.countryid  =  t2.country group by t1.countryid having count(*)  >  2
+
+index: 163
+db_id: car_1
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PHILADELPHIA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'TORONTO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+medium gold: select count(*) from countries as t1 join car_makers as t2 on t1.countryid  =  t2.country group by t1.countryid having count(*)  >  2
+
+index: 164
+db_id: car_1
+easy pred: SELECT DISTINCT course.department, course.name, course.number, course_offering.semester, program_course.category, program_course.course_id, program_course.program_id, program_course.workload FROM course, course_offering, program_course WHERE course.course_id = course_offering.course_id AND program_course.course_id = course.course_id AND program_course.program_id = (SELECT program_id FROM program WHERE name = 'EECS' AND college = 'ECS') AND course_offering.semester = (SELECT MAX(SEMESTERalias1.semester) FROM course_offering AS SEMESTERalias1 WHERE SEMESTERalias1.course_id = course_offering.course_id) AND course.department = 'EECS' AND course.name LIKE '%314%' AND course.number = 314
+easy gold: SELECT COUNT(*) FROM CARS_DATA WHERE Cylinders  >  6;
+
+index: 165
+db_id: car_1
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND date_day.day_number = 25 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DALLAS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT COUNT(*) FROM CARS_DATA WHERE Cylinders  >  6;
+
+index: 166
+db_id: car_1
+extra pred: SELECT DISTINCT venueid FROM venue WHERE venuename = 'Neuroscience'
+extra gold: SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Cylinders  =  4 ORDER BY T2.horsepower DESC LIMIT 1;
+
+index: 167
+db_id: car_1
+extra pred: SELECT DISTINCT course.department, course.name, course.number FROM course INNER JOIN course_offering ON course.course_id = course_offering.course_id INNER JOIN program_course ON program_course.course_id = course_offering.course_id INNER JOIN semester ON semester.semester_id = course_offering.semester WHERE (semester.semester LIKE '%FA%' OR semester.semester LIKE '%WN') AND program_course.category LIKE '%MDE%' AND program_course.course_id = course.course_id
+extra gold: SELECT T1.Model FROM CAR_NAMES AS T1 JOIN CARS_DATA AS T2 ON T1.MakeId  =  T2.Id WHERE T2.Cylinders  =  4 ORDER BY T2.horsepower DESC LIMIT 1;
+
+index: 168
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: SELECT T2.MakeId ,  T2.Make FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Horsepower  >  (SELECT min(Horsepower) FROM CARS_DATA) AND T1.Cylinders  <=  3;
+
+index: 169
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: select t2.makeid ,  t2.make from cars_data as t1 join car_names as t2 on t1.id  =  t2.makeid where t1.horsepower  >  (select min(horsepower) from cars_data) and t1.cylinders  <  4;
+
+index: 170
+db_id: car_1
+medium pred: SELECT DISTINCT aircraft_code FROM aircraft WHERE basic_type = 'F28'
+medium gold: select max(mpg) from cars_data where cylinders  =  8 or year  <  1980
+
+index: 171
+db_id: car_1
+medium pred: SELECT COUNT(*) > 0 FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'STDABRD' AND course.number = 368 AND semester.semester = 'FA' AND semester.semester_id = course_offering.semester AND semester.year = 2016
+medium gold: select max(mpg) from cars_data where cylinders  =  8 or year  <  1980
+
+index: 172
+db_id: car_1
+extra pred: SELECT DISTINCT instructor.name FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'MATSCIE' AND course.number = 360 AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id
+extra gold: SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.Model  =  T2.Model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.Id JOIN CAR_MAKERS AS T4 ON T1.Maker  =  T4.Id WHERE T3.weight  <  3500 AND T4.FullName != 'Ford Motor Company';
+
+index: 173
+db_id: car_1
+extra pred: SELECT DISTINCT name, number FROM course WHERE department = 'LATIN' AND credits = 3
+extra gold: SELECT DISTINCT T1.model FROM MODEL_LIST AS T1 JOIN CAR_NAMES AS T2 ON T1.Model  =  T2.Model JOIN CARS_DATA AS T3 ON T2.MakeId  =  T3.Id JOIN CAR_MAKERS AS T4 ON T1.Maker  =  T4.Id WHERE T3.weight  <  3500 AND T4.FullName != 'Ford Motor Company';
+
+index: 174
+db_id: car_1
+hard pred: SELECT DISTINCT fare.fare_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, fare, flight, flight_fare, fare_basis WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND date_day.day_number = 30 AND date_day.month_number = 9 AND date_day.year = 1991 AND flight_fare.fare_id = fare.fare_id AND flight.flight_id = flight_fare.flight_id AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND fare_basis.fare_basis_code = fare.fare_basis_code AND fare_basis.discounted = 'Y' AND fare_basis.one_direction_cost = (SELECT MIN(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, city AS CITYalias2, fare AS FAREalias1, flight AS FLIGHTalias1, flight_fare AS FLIGHT_FAREalias1, fare_basis AS FARE_BASISalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'SAN FRANCISCO' AND FARE_BASISalias1.discounted = 'Y' AND FARE_BASISalias1.one_direction_cost < fare_basis.one_direction_cost AND FLIGHT_FAREalias1.fare_id = FAREalias1.fare_id AND FLIGHTalias1.flight_id = FLIGHT_FAREalias1.flight_id AND flight.flight_id = FLIGHTalias1.flight_id AND fare_basis.fare_basis_code = FARE_BASISalias1.fare_basis_code)) AND CITY_0.city
+hard gold: SELECT CountryName FROM countries EXCEPT SELECT T1.CountryName FROM countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.countryId  =  T2.Country;
+
+index: 175
+db_id: car_1
+hard pred: SELECT DISTINCT course.department, course.name, course.number, program_course.workload, program_course.workload FROM course, program_course WHERE program_course.category LIKE '%ULCS%' AND program_course.course_id = course.course_id AND program_course.workload = (SELECT MIN(PROGRAM_COURSEalias1.workload) FROM program_course AS PROGRAM_COURSEalias1 WHERE PROGRAM_COURSEalias1.category LIKE '%ULCS%')
+hard gold: SELECT CountryName FROM countries EXCEPT SELECT T1.CountryName FROM countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.countryId  =  T2.Country;
+
+index: 176
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: select t1.id ,  t1.maker from car_makers as t1 join model_list as t2 on t1.id  =  t2.maker group by t1.id having count(*)  >=  2 intersect select t1.id ,  t1.maker from car_makers as t1 join model_list as t2 on t1.id  =  t2.maker join car_names as t3 on t2.model  =  t3.model group by t1.id having count(*)  >  3;
+
+index: 177
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PHILADELPHIA' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.flight_days = 'DAILY'
+extra gold: SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker GROUP BY T1.Id HAVING count(*)  >=  2 INTERSECT SELECT T1.Id ,  T1.Maker FROM CAR_MAKERS AS T1 JOIN MODEL_LIST AS T2 ON T1.Id  =  T2.Maker JOIN CAR_NAMES AS T3 ON T2.model  =  T3.model GROUP BY T1.Id HAVING count(*)  >  3;
+
+index: 178
+db_id: car_1
+extra pred: SELECT DISTINCT flight.time_elapsed FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'ATLANTA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+extra gold: SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';
+
+index: 179
+db_id: car_1
+extra pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (((((date_day.day_number = 28 AND date_day.month_number = 6 AND date_day.year = 1991) AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code) AND flight.departure_time > 1900) AND flight.departure_time < 2000) AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'KANSAS CITY' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CHICAGO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+extra gold: select t1.countryid ,  t1.countryname from countries as t1 join car_makers as t2 on t1.countryid  =  t2.country group by t1.countryid having count(*)  >  3 union select t1.countryid ,  t1.countryname from countries as t1 join car_makers as t2 on t1.countryid  =  t2.country join model_list as t3 on t2.id  =  t3.maker where t3.model  =  'fiat';
+
+index: 180
+db_id: flight_2
+easy pred: SELECT DISTINCT dataset.datasetid FROM dataset, paperdataset WHERE paperdataset.datasetid = dataset.datasetid AND paperdataset.paperid IN (SELECT KEYWORD.paperid FROM keyphrase AS KEYWORD, paperkeyphrase WHERE KEYWORD.keyphraseid = paperkeyphrase.keyphraseid AND KEYWORD.keyphrasename = 'structured prediction')
+easy gold: SELECT Country FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+
+index: 181
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'PITTSBURGH' AND fare.to_airport = AIRPORT_SERVICE_1.airport_code AND flight.flight_id = fare.flight_id AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'DENVER' AND fare.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.fare_id = fare.fare_id AND flight.flight_fare = (SELECT MIN(FLIGHTalias1.flight_id) FROM airport_service AS AIRPORT_SERVICEalias2, city AS CITYalias2, fare AS FAREalias2, flight AS FLIGHTalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'PITTSBURGH' AND FAREalias2.to_airport = AIRPORT_SERVICEalias2.airport_code AND FLIGHTalias1.flight_id = FAREalias2.flight_id AND FLIGHTalias1.to_airport = AIRPORT_SERVICEalias2.airport_code)
+easy gold: SELECT Country FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+
+index: 182
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SEATTLE' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.departure_time > 1700 AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.airline_code = 'AAL'
+easy gold: SELECT Abbreviation FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+
+index: 183
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'CHARLOTTE NORTH CAROLINA' AND date_day.day_number = 20 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MIAMI FLORIDA' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.round_trip_cost = (SELECT MIN(FLIGHTalias1.round_trip_cost) FROM airport_service AS AIRPORT_SERVICE_2, airport_service AS AIRPORT_SERVICE_3, city AS CITY_2, city AS CITY_3, date_day AS DATE_DAY_0, days AS DAYS_0, flight AS FLIGHTalias1 WHERE (CITY_3.city_code = AIRPORT_SERVICE_3.city_code AND CITY_3.city_name = 'CHARLOTTE NORTH CAROLINA' AND DATE_DAY_0.day_number = 20 AND DATE_DAY_0.month_number = 3 AND DATE_DAY_0.year = 1991 AND DAYS_0.day_name = DATE_DAY_0.day_name AND FLIGHTalias1.flight_days = DAYS_0.days_code AND FLIGHTalias1.to_airport = AIRPORT_SERVICE_3.airport_code) AND CITY_2.city_code =
+easy gold: SELECT Abbreviation FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+
+index: 184
+db_id: flight_2
+medium pred: SELECT border FROM border_info WHERE state_name = 'montana'
+medium gold: SELECT Airline ,  Abbreviation FROM AIRLINES WHERE Country  =  "USA"
+
+index: 185
+db_id: flight_2
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, airport_service AS AIRPORT_SERVICE_2, city AS CITY_0, city AS CITY_1, city AS CITY_2, flight, flight_stop WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight_stop.flight_id = flight.flight_id AND flight_stop.stop_airport = AIRPORT_SERVICE_1.airport_code AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = CITY_1.city_code) AND CITY_2.city_code = AIRPORT_SERVICE_2.city_code AND CITY_2.city_name = 'DALLAS' AND flight_stop.stop_airport = AIRPORT_SERVICE_2.airport_code AND flight.flight_id = flight_stop.flight_id
+medium gold: SELECT Airline ,  Abbreviation FROM AIRLINES WHERE Country  =  "USA"
+
+index: 186
+db_id: flight_2
+medium pred: SELECT journal.name FROM journal, keyword, publication, publication_keyword WHERE keyword.keyword = 'Relational Database' AND publication_keyword.kid = keyword.kid AND publication.jid = journal.jid AND publication.pid = publication_keyword.pid GROUP BY journal.name HAVING COUNT(DISTINCT (publication.title)) > 60
+medium gold: SELECT AirportCode ,  AirportName FROM AIRPORTS WHERE city  =  "Anthony"
+
+index: 187
+db_id: flight_2
+medium pred: SELECT COUNT(*) > 0 FROM course, course_offering, semester WHERE course.course_id = course_offering.course_id AND course.department = 'GREEK' AND course.number = 441 AND course_offering.section_number = 825 AND semester.semester = 'Winter' AND semester.semester_id = course_offering.semester AND semester.year = 2007
+medium gold: SELECT AirportCode ,  AirportName FROM AIRPORTS WHERE city  =  "Anthony"
+
+index: 188
+db_id: flight_2
+easy pred: SELECT DISTINCT fare.fare_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, fare, flight, flight_fare WHERE ((CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'TORONTO' AND date_day.day_number = 15 AND date_day.month_number = 3 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight_fare.fare_id = fare.fare_id AND flight.flight_id = flight_fare.flight_id AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND flight.flight_days = days.days_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code) AND fare.restriction_code = 'Y'
+easy gold: SELECT count(*) FROM AIRLINES
+
+index: 189
+db_id: flight_2
+easy pred: SELECT DISTINCT instructor.name FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'intelligent systems' AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id
+easy gold: SELECT count(*) FROM AIRLINES
+
+index: 190
+db_id: flight_2
+easy pred: SELECT city_name FROM city WHERE population = (SELECT MAX(CITYalias1.population) FROM city AS CITYalias1)
+easy gold: SELECT count(*) FROM AIRPORTS
+
+index: 191
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND flight.airline_code = 'UA'
+easy gold: SELECT count(*) FROM AIRPORTS
+
+index: 192
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'DENVER' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM FLIGHTS
+
+index: 193
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, fare, flight WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BOSTON' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND fare.one_direction_cost = (SELECT MIN(FAREalias1.one_direction_cost) FROM airport_service AS AIRPORT_SERVICEalias2, airport_service AS AIRPORT_SERVICEalias3, city AS CITYalias2, city AS CITYalias3, fare AS FAREalias1, flight AS FLIGHTalias1 WHERE CITYalias2.city_code = AIRPORT_SERVICEalias2.city_code AND CITYalias2.city_name = 'BOSTON' AND CITYalias3.city_code = AIRPORT_SERVICEalias3.city_code AND CITYalias3.city_name = 'SAN FRANCISCO' AND FLIGHTalias1.from_airport = AIRPORT_SERVICEalias2.airport_code AND FLIGHTalias1.flight_id = FAREalias1.flight_id AND FLIGHTalias1.to_airport = AIRPORT_SERVICEalias3.airport_code)) AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND fare.flight_id = flight.flight_id
+easy gold: SELECT count(*) FROM FLIGHTS
+
+index: 194
+db_id: flight_2
+easy pred: SELECT DISTINCT course.department, course.name, course.number FROM course, program_course WHERE course.department LIKE '%ANTHRCUL%' AND program_course.category LIKE '%Core%' AND program_course.course_id = course.course_id
+easy gold: SELECT Airline FROM AIRLINES WHERE Abbreviation  =  "UAL"
+
+index: 195
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.departure_time FROM airport AS AIRPORT_0, airport AS AIRPORT_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_0.city_code AND CITY_0.city_name = 'DENVER' AND CITY_1.city_code = AIRPORT_1.city_code AND CITY_1.city_name = 'SAN FRANCISCO' AND flight.from_airport = AIRPORT_0.airport_code AND flight.to_airport = AIRPORT_1.airport_code AND flight.airline_code = 'CO'
+easy gold: SELECT Airline FROM AIRLINES WHERE Abbreviation  =  "UAL"
+
+index: 196
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MIAMI' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'CLEVELAND' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM AIRLINES WHERE Country  =  "USA"
+
+index: 197
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BOSTON' AND date_day.day_number = 29 AND date_day.month_number = 7 AND date_day.year = 1991 AND flight.flight_days = date_day.day_name AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'BALTIMORE' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT count(*) FROM AIRLINES WHERE Country  =  "USA"
+
+index: 198
+db_id: flight_2
+medium pred: SELECT business.bid FROM business, neighborhood WHERE business.city = 'Los Angeles' AND neighborhood.business_id = business.business_id AND neighborhood.neighborhood_name = 'Italian'
+medium gold: SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  "Alton"
+
+index: 199
+db_id: flight_2
+medium pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'INDIANAPOLIS' AND date_day.day_number = 12 AND date_day.month_number = 4 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'CLEVELAND' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+medium gold: SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  "Alton"
+
+index: 200
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'CLEVELAND' AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND flight.arrival_time BETWEEN 1800 AND 2200) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ORLANDO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT AirportName FROM AIRPORTS WHERE AirportCode  =  "AKO"
+
+index: 201
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, airport_service AS AIRPORT_SERVICE_2, city AS CITY_0, city AS CITY_1, city AS CITY_2, flight, flight_stop WHERE (CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SAN FRANCISCO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'INDIANAPOLIS' AND CITY_2.city_code = AIRPORT_SERVICE_2.city_code AND CITY_2.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code AND flight.flight_id = flight_stop.flight_id AND flight_stop.stop_airport = AIRPORT_SERVICE_2.airport_code) AND flight.departure_time <= 2100
+easy gold: SELECT AirportName FROM AIRPORTS WHERE AirportCode  =  "AKO"
+
+index: 202
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'LAS VEGAS' AND date_day.day_number = 25 AND date_day.month_number = 8 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'MEMPHIS' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT AirportName FROM AIRPORTS WHERE City = "Aberdeen"
+
+index: 203
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'BALTIMORE' AND date_day.day_number = 10 AND date_day.month_number = 8 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'PITTSBURGH' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+easy gold: SELECT AirportName FROM AIRPORTS WHERE City = "Aberdeen"
+
+index: 204
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'SAN FRANCISCO' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM FLIGHTS WHERE SourceAirport  =  "APG"
+
+index: 205
+db_id: flight_2
+easy pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, flight WHERE CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'ATLANTA' AND CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'WASHINGTON' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code
+easy gold: SELECT count(*) FROM FLIGHTS WHERE SourceAirport  =  "APG"
+
+index: 206
+db_id: flight_2
+easy pred: SELECT DISTINCT semester.semester, semester.semester_id FROM course, course_offering, semester, student, student_record WHERE course.course_id = course_offering.course_id AND course.department = 'EECS' AND course.number = 763 AND student_record.course_id = course_offering.course_id AND student_record.grade = 'W' AND student.firstname = 'Sarah' AND student.lastname = 'Mcdowell' AND student.student_id = student_record.student_id AND semester.semester_id = course_offering.semester AND semester.semester LIKE '%WN%'
+easy gold: SELECT count(*) FROM FLIGHTS WHERE DestAirport  =  "ATO"
+
+index: 207
+db_id: flight_2
+easy pred: SELECT DISTINCT name, number FROM course WHERE department = 'LATINOAM' AND credits = 16
+easy gold: SELECT count(*) FROM FLIGHTS WHERE DestAirport  =  "ATO"
+
+index: 208
+db_id: flight_2
+medium pred: SELECT DISTINCT course.department, course.name, course.number, program_course.workload, program_course.workload FROM course, program_course WHERE program_course.category LIKE '%PreMajor%' AND program_course.course_id = course.course_id AND program_course.workload = (SELECT MIN(PROGRAM_COURSEalias1.workload) FROM program_course AS PROGRAM_COURSEalias1 WHERE PROGRAM_COURSEalias1.category LIKE '%PreMajor%')
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport  =  T2.AirportCode WHERE T2.City  =  "Aberdeen"
+
+index: 209
+db_id: flight_2
+medium pred: SELECT COUNT(DISTINCT instructor.instructor_id) FROM course, course_offering, instructor, offering_instructor WHERE course.course_id = course_offering.course_id AND course.department = 'ROMLANG' AND course.number = 500 AND course_offering.semester = (SELECT semester_id FROM semester WHERE semester = 'Spring' AND year = 2020) AND offering_instructor.instructor_id = instructor.instructor_id AND offering_instructor.offering_id = course_offering.offering_id
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport  =  T2.AirportCode WHERE T2.City  =  "Aberdeen"
+
+index: 210
+db_id: flight_2
+medium pred: SELECT COUNT(river_name) FROM river WHERE length > 750 AND traverse = 'ohio'
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.City  =  "Aberdeen"
+
+index: 211
+db_id: flight_2
+medium pred: SELECT DISTINCT aircraft.basic_type FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, aircraft, flight WHERE (AIRPORT_SERVICE_0.city_code = 'CITY_0' AND AIRPORT_SERVICE_1.city_code = 'CITY_1' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND aircraft.aircraft_code = flight.aircraft_code_sequence AND aircraft.basic_type = 'BASIC_TYPE' AND flight.airline_code = 'DL'
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.City  =  "Aberdeen"
+
+index: 212
+db_id: flight_2
+hard pred: SELECT COUNT(DISTINCT course.course_id) FROM course, program_course WHERE course.course_id = program_course.course_id AND course.has_lab = 'Y' AND program_course.category LIKE '%ULCS%'
+hard gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRPORTS AS T3 ON T1.SourceAirport  =  T3.AirportCode WHERE T2.City  =  "Ashley" AND T3.City  =  "Aberdeen"
+
+index: 213
+db_id: flight_2
+hard pred: SELECT DISTINCT flight.flight_id FROM airport_service AS AIRPORT_SERVICE_0, airport_service AS AIRPORT_SERVICE_1, city AS CITY_0, city AS CITY_1, date_day, days, flight WHERE (CITY_1.city_code = AIRPORT_SERVICE_1.city_code AND CITY_1.city_name = 'MONTREAL' AND date_day.day_number = 23 AND date_day.month_number = 8 AND date_day.year = 1991 AND days.day_name = date_day.day_name AND flight.flight_days = days.days_code AND flight.to_airport = AIRPORT_SERVICE_1.airport_code) AND CITY_0.city_code = AIRPORT_SERVICE_0.city_code AND CITY_0.city_name = 'TORONTO' AND flight.from_airport = AIRPORT_SERVICE_0.airport_code
+hard gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRPORTS AS T3 ON T1.SourceAirport  =  T3.AirportCode WHERE T2.City  =  "Ashley" AND T3.City  =  "Aberdeen"
+
+index: 214
+db_id: flight_2
+medium pred: SELECT DISTINCT course.department, course.name, course.number, program_course.category, program_course.course_id, semester.semester FROM course, course_offering, program_course, semester WHERE course_offering.course_id = course.course_id AND course_offering.semester = semester.semester_id AND program_course.course_id = course.course_id AND program_course.category LIKE '%CS%' AND semester.semester = 'Winter' AND semester.year = 2016
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T1.Airline  =  T2.uid WHERE T2.Airline = "JetBlue Airways"
+
+index: 215
+db_id: flight_2
+medium pred: SELECT DISTINCT student.firstname, student.lastname FROM course INNER JOIN course_offering ON course.course_id = course_offering.course_id INNER JOIN gsi ON gsi.course_offering_id = course_offering.offering_id INNER JOIN student ON student.student_id = gsi.student_id INNER JOIN semester ON semester.semester_id = course_offering.semester WHERE course.department = 'SEAS' AND course.number = 698 AND semester.semester = 'FA' AND semester.year = 2016
+medium gold: SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T1.Airline  =  T2.uid WHERE T2.Airline = "JetBlue Airways"
+
+index: 216
+db_id: flight_2
+medium pred: SELECT DISTINCT course.department, course.name, course.number, semester.semester FROM course, course_offering, semester WHERE course_offering.course_id = course.course_id AND course_offering.semester = (SELECT SEMESTERalias1.semester FROM semester AS SEMESTERalias1 WHERE SEMESTERalias1.semester = 'FA' AND SEMESTERalias1.year = 2016) AND course.department = 'MDE' AND course.number BETWEEN 101 AND 108 AND semester.semester = 'FA' AND semester.year = 2016
+medium gold: SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  "United Airlines" AND T2.DestAirport  =  "ASY"
+
+index: 217
+db_id: flight_2
+medium pred: SELECT DISTINCT num_enrolled FROM course WHERE department = 'EECS' AND number = 477
+medium gold: SELECT count(*) FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T2.Airline  =  T1.uid WHERE T1.Airline  =  "United Airlines" AND T2.DestAirport  =  "ASY"
+

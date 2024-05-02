@@ -1,0 +1,115 @@
+<table style="text-align: center;">
+  <tr>
+    <th style="text-align: center;">Model</th>
+    <th>Method</th>
+    <th>Easy</th>
+    <th>Medium</th>
+    <th>Hard</th>
+    <th>Extra</th>
+    <th>All</th>
+    <th>Training time</th>
+    <th>Inference time</th>
+  </tr>
+  <tr>
+  <td>CodeLlama-7B-Instruct</td>
+    <td>lora</td>
+    <td>0.923</td>
+    <td>0.756</td>
+    <td>0.586</td>
+    <td>0.349</td>
+    <td>0.702</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>qlora</td>
+    <td>0.911</td>
+    <td>0.751</td>
+    <td>0.598</td>
+    <td>0.331</td>
+    <td>0.696</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>base</td>
+    <td>0.698</td>
+    <td>0.601</td>
+    <td>0.408</td>
+    <td>0.271</td>
+    <td>0.539</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    <td>CodeLlama-7B-Instruct (Reproduced)</td>
+    <td>lora</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>qlora</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+    </tr>
+    <td>CodeLlama-7B-Instruct (Ours)</td>
+    <td>lora</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>qlora</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr> 
+</table>
+
+| Model Parameters | GPU RAM | CPU RAM | DISK   |
+| ---------------- | ------- | ------- | ------ |
+| 7b               | 21.3GB     | 9.5GB   |  |

@@ -6,6 +6,7 @@ import os
 import sys
 
 ROOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(ROOT_PATH)
 sys.path.append(ROOT_PATH)
 import sqlite3
 import argparse
@@ -13,8 +14,8 @@ import subprocess
 import json
 
 from typing import Optional, Dict, Any
-from process_sql import get_schema, Schema, get_sql
-from exec_eval import eval_exec_match
+from eval.process_sql import get_schema, Schema, get_sql
+from eval.exec_eval import eval_exec_match
 from func_timeout import func_timeout, FunctionTimedOut
 
 TIMEOUT = 30  # maximum waiting time for a single query

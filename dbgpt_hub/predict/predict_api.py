@@ -1,4 +1,5 @@
 import os
+from dbgpt_hub.llm_base.chat_model import ChatModel
 from dbgpt_hub.predict import predict
 from typing import Optional, Dict, Any
 
@@ -12,10 +13,10 @@ def start_predict(
     # Default Arguments
     if args is None:
         args = {
-            "model_name_or_path": "codellama/CodeLlama-13b-Instruct-hf",
+            "model_name_or_path": "codellama/CodeLlama-7b-Instruct-hf",
             "template": "llama2",
             "finetuning_type": "lora",
-            "checkpoint_dir": "dbgpt_hub/output/adapter/CodeLlama-13b-sql-lora",
+            "checkpoint_dir": "dbgpt_hub/output/adapter/CodeLlama-7b-sql-lora",
             "predict_file_path": "dbgpt_hub/data/eval_data/dev_sql.json",
             "predict_out_dir": "dbgpt_hub/output/",
             "predicted_out_filename": "pred_sql.sql",
@@ -24,6 +25,7 @@ def start_predict(
         args = args
 
     # Execute prediction
+    model = ChatModel(args)
     predict.predict(args)
 
 

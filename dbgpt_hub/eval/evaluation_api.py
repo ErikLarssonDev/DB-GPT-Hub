@@ -17,7 +17,7 @@ def start_evaluate(
             "table_natsql": "./dbgpt_hub/data/eval_data/tables_for_natsql2sql.json",
             "etype": "exec",
             "plug_value": True,
-            "keep_distict": False,
+            "keep_distinct": False,
             "progress_bar_for_each_datapoint": False,
             "natsql": False,
         }
