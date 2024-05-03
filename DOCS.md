@@ -10,6 +10,19 @@
     <th>Training time</th>
     <th>Inference time</th>
   </tr>
+
+  <tr>
+  <td>Count</td>
+    <td>95M</td>
+    <td>248</td>
+    <td>446</td>
+    <td>174</td>
+    <td>166</td>
+    <td>1034</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+
   <tr>
   <td>CodeLlama-7B-Instruct</td>
     <td>lora</td>
@@ -45,11 +58,11 @@
   </tr>
     <td>CodeLlama-7B-Instruct (Reproduced)</td>
     <td>lora</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>0.927</td>
+    <td>0.780</td>
+    <td>0.615</td>
+    <td>0.367</td>
+    <td>0.721</td>
     <td>-</td>
     <td>-</td>
   </tr>

@@ -1,5 +1,8 @@
+import copy
 import os
 import sys
+
+from dbgpt_hub.configs.data_args import DatasetAttr
 
 ROOT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(ROOT_PATH)
@@ -14,7 +17,7 @@ from dbgpt_hub.data_process.data_utils import (
     preprocess_dataset,
     split_dataset,
 )
-from dbgpt_hub.configs.config import IGNORE_INDEX
+from dbgpt_hub.configs.config import EXT2TYPE, IGNORE_INDEX
 from dbgpt_hub.llm_base.model_trainer import (
     Seq2SeqPeftTrainer,
     ComputeMetrics,
@@ -22,6 +25,9 @@ from dbgpt_hub.llm_base.model_trainer import (
     plot_loss,
 )
 
+from datasets import (
+    load_dataset
+)
 
 if TYPE_CHECKING:
     from transformers import TrainerCallback
@@ -43,12 +49,84 @@ def run_sft(
     finetuning_args: "FinetuningArguments",
     generating_args: "GeneratingArguments",
     callbacks: Optional[List["TrainerCallback"]] = None,
+    args = None
 ):
     dataset = get_dataset(model_args, data_args)
+
     model, tokenizer = load_model_and_tokenizer(
         model_args, finetuning_args, training_args.do_train
     )
+
     dataset = preprocess_dataset(dataset, tokenizer, data_args, training_args, "sft")
+    if training_args.do_eval:
+
+        dataset_attr = DatasetAttr(
+                    "example_text2sql_dev_one_shot.json",
+                    dataset_name="example_text2sql_dev_one_shot.json",
+                    dataset_sha1=None,
+                    stage=None,
+                )
+        
+        data_path = None
+        data_files: List[str] = []
+
+        if os.path.isdir(
+            os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)
+        ):  # directory
+            for file_name in os.listdir(
+                os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)
+            ):
+                data_files.append(
+                    os.path.join(
+                        data_args.dataset_dir, dataset_attr.dataset_name, file_name
+                    )
+                )
+                if data_path is None:
+                    data_path = EXT2TYPE.get(file_name.split(".")[-1], None)
+                else:
+                    assert data_path == EXT2TYPE.get(
+                        file_name.split(".")[-1], None
+                    ), "file type does not match."
+        elif os.path.isfile(
+            os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)
+        ):  # single file
+            data_files.append(
+                os.path.join(data_args.dataset_dir, dataset_attr.dataset_name)
+            )
+            data_path = EXT2TYPE.get(dataset_attr.dataset_name.split(".")[-1], None)
+        else:
+            raise ValueError("File not found.")
+
+        assert data_path, "File extension must be txt, csv, json or jsonl."
+
+        eval_dataset = load_dataset(
+            data_path,
+            data_files=data_files,
+            split=data_args.split,
+            cache_dir=model_args.cache_dir,
+            streaming=data_args.streaming,
+            use_auth_token=True if model_args.use_auth_token else None,
+        )
+        print(f"len train dataset: {len(dataset)}")
+        print(f"len dataset: {len(eval_dataset)}")
+
+        for column_name in ["prompt", "query", "response", "history"]:  # align datasets
+            if (
+                getattr(dataset_attr, column_name)
+                and getattr(dataset_attr, column_name) != column_name
+            ):
+                eval_dataset = eval_dataset.rename_column(
+                    getattr(dataset_attr, column_name), column_name
+                )
+
+        eval_data_args = copy.deepcopy(data_args)
+        eval_data_args.dataset = "example_text2sql_dev_one_shot.json"
+        eval_data_args.dataset_list = ["example_text2sql_dev_one_shot.json"]
+        eval_dataset = preprocess_dataset(eval_dataset, tokenizer, eval_data_args, training_args, "sft")
+    else:
+        eval_dataset = dataset
+
+
     data_collator = DataCollatorForSeq2Seq(
         tokenizer=tokenizer,
         label_pad_token_id=IGNORE_INDEX
@@ -79,7 +157,9 @@ def run_sft(
         compute_metrics=ComputeMetrics(tokenizer)
         if training_args.predict_with_generate
         else None,
-        **split_dataset(dataset, data_args, training_args)
+        # **split_dataset(dataset, data_args, training_args)
+        train_dataset=dataset,
+        eval_dataset=eval_dataset
     )
 
     # Keyword arguments for `model.generate`
@@ -137,8 +217,9 @@ def train(
         finetuning_args,
         generating_args,
     ) = get_train_args(args)
+ 
     callbacks = [LogCallback()] if callbacks is None else callbacks
-
+    
     run_sft(
         model_args,
         data_args,

@@ -26,7 +26,7 @@ def inference(model: ChatModel, predict_data: List[Dict], **input_kwargs):
     # test
     # for item in predict_data[:20]:
     for item in tqdm(predict_data, desc="Inference Progress", unit="item"):
-        print(f"item[input] \n{item['input']}")
+        # print(f"item[input] \n{item['input']}")
         response, _ = model.chat(query=item["input"], history=[], **input_kwargs)
         res.append(response)
     return res

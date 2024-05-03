@@ -5,6 +5,9 @@ from dbgpt_hub.eval import start_evaluate
 import nltk
 nltk.download('punkt')
 
+# Config
+MODEL_NAME_OR_PATH = "codellama/CodeLlama-7b-Instruct-hf"
+
 # Config the input datasets
 data_folder = "dbgpt_hub/data"
 data_info = [
@@ -22,7 +25,7 @@ data_info = [
 
 # Config training parameters
 train_args = {
-            "model_name_or_path": "codellama/CodeLlama-7b-Instruct-hf",
+            "model_name_or_path": MODEL_NAME_OR_PATH,
             "do_train": True,
             "dataset": "example_text2sql_train",
             "max_source_length": 2048,
@@ -48,7 +51,7 @@ train_args = {
 
 # Config predict parameters
 predict_args = {
-            "model_name_or_path": "codellama/CodeLlama-7b-Instruct-hf",
+            "model_name_or_path": MODEL_NAME_OR_PATH,
             "template": "llama2",
             "finetuning_type": "lora",
             "checkpoint_dir": "dbgpt_hub/output/adapter/CodeLlama-7b-sql-lora",
@@ -59,7 +62,7 @@ predict_args = {
 
 # Config evaluation parameters
 evaluate_args =  {
-            "input": "./dbgpt_hub/output/pred/pred_sql_dev_skeleton.sql",
+            "input": "./dbgpt_hub/output/pred/pred_codellama7b_baseline_dev.sql",
             "gold": "./dbgpt_hub/data/eval_data/gold.txt",
             "gold_natsql": "./dbgpt_hub/data/eval_data/gold_natsql2sql.txt",
             "db": "./dbgpt_hub/data/spider/database",

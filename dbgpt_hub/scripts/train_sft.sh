@@ -1,4 +1,4 @@
-wandb offline # Close wandb
+wandb online # Close wandb
 # a100 ,单卡
 current_date=$(date +"%Y%m%d_%H%M")
 train_log="dbgpt_hub/output/logs/train_sft_test_${current_date}.log"
@@ -11,8 +11,9 @@ num_shot=0
 # one-shot train
 # num_shot=1
 
-dataset="example_text2sql_train"
+dataset="example_text2sql_train_one_shot" # TODO: Add train/eval dataset
 if [ "$num_shot" -eq 1 ]; then
+    echo "ONE_SHOT!"
     dataset="example_text2sql_train_one_shot"
 fi
 model_name_or_path="codellama/CodeLlama-7b-Instruct-hf"
@@ -22,6 +23,8 @@ output_dir="dbgpt_hub/output/adapter/CodeLlama-7b-sql-lora"
 CUDA_VISIBLE_DEVICES=0 python dbgpt_hub/train/sft_train.py \
     --model_name_or_path $model_name_or_path \
     --do_train \
+    --do_eval \
+    --do_predict \
     --dataset $dataset \
     --max_source_length 2048 \
     --max_target_length 512 \
@@ -39,10 +42,9 @@ CUDA_VISIBLE_DEVICES=0 python dbgpt_hub/train/sft_train.py \
     --logging_steps 50 \
     --save_steps 2000 \
     --learning_rate 2e-4 \
-    --num_train_epochs 8 \
+    --num_train_epochs 32 \
     --plot_loss \
     --bf16  >> ${train_log}
-    # --bf16#v100不支持bf16
     
 echo "############train end###############" >>${train_log}
 echo "Train End time: $(date)" >>${train_log}
