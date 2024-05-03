@@ -1,7 +1,9 @@
 wandb online # Close wandb
 # a100 ,单卡
+experiment_name="CodeLlama-7b-sql-lora-25e"
+
 current_date=$(date +"%Y%m%d_%H%M")
-train_log="dbgpt_hub/output/logs/train_sft_test_${current_date}.log"
+train_log="dbgpt_hub/output/logs/train_sft_$(experiment_name)_${current_date}.log"
 start_time=$(date +%s)
 echo " Train Start time: $(date -d @$start_time +'%Y-%m-%d %H:%M:%S')" >>${train_log}
 
@@ -11,13 +13,12 @@ num_shot=0
 # one-shot train
 # num_shot=1
 
-dataset="example_text2sql_train_one_shot" # TODO: Add train/eval dataset
+dataset="example_text2sql_train" # TODO: Add train/eval dataset
 if [ "$num_shot" -eq 1 ]; then
-    echo "ONE_SHOT!"
-    dataset="example_text2sql_train_one_shot"
+    dataset="$(dataset)_one_shot"
 fi
 model_name_or_path="codellama/CodeLlama-7b-Instruct-hf"
-output_dir="dbgpt_hub/output/adapter/CodeLlama-7b-sql-lora"
+output_dir="dbgpt_hub/output/adapter/$(experiment_name)"
 
 # the default param set could be run in a server with one a100(40G) gpu, if your server not support the set,you can set smaller param such as  lora_rank and use qlora with quant 4 eg...
 CUDA_VISIBLE_DEVICES=0 python dbgpt_hub/train/sft_train.py \
@@ -39,11 +40,12 @@ CUDA_VISIBLE_DEVICES=0 python dbgpt_hub/train/sft_train.py \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 16 \
     --lr_scheduler_type cosine_with_restarts \
-    --logging_steps 50 \
-    --save_steps 2000 \
+    --logging_steps 1 \
+    --save_steps 541 \
     --learning_rate 2e-4 \
-    --num_train_epochs 32 \
+    --num_train_epochs 25 \
     --plot_loss \
+    --run_name $experiment_name \
     --bf16  >> ${train_log}
     
 echo "############train end###############" >>${train_log}
