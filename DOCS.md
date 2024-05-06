@@ -77,14 +77,14 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>
+  <tr>                                                      
     <td></td>
     <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>0.250 </td>
+    <td>0.229</td>
+    <td>0.138</td>
+    <td>0.060</td>
+    <td>0.191 </td>
     <td>-</td>
     <td>-</td>
   </tr>
