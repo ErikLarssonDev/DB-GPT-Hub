@@ -14,8 +14,8 @@ import subprocess
 import json
 
 from typing import Optional, Dict, Any
-from eval.process_sql import get_schema, Schema, get_sql
-from eval.exec_eval import eval_exec_match
+from process_sql import get_schema, Schema, get_sql
+from exec_eval import eval_exec_match
 from func_timeout import func_timeout, FunctionTimedOut
 
 TIMEOUT = 30  # maximum waiting time for a single query
