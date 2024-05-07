@@ -170,6 +170,16 @@ def run_sft(
     gen_kwargs["pad_token_id"] = tokenizer.pad_token_id
     gen_kwargs["logits_processor"] = get_logits_processor()
 
+    # Evaluation before starting training
+    if training_args.do_eval:
+        metrics = trainer.evaluate(metric_key_prefix="eval", **gen_kwargs)
+        if (
+            training_args.predict_with_generate
+        ):  # eval_loss will be wrong if predict_with_generate is enabled
+            metrics.pop("eval_loss", None)
+        trainer.log_metrics("eval", metrics)
+        trainer.save_metrics("eval", metrics)
+
     # Training
     if training_args.do_train:
         train_result = trainer.train(
