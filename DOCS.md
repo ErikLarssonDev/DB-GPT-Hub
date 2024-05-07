@@ -129,7 +129,7 @@
   </tr>
 
   <tr>
-    <td><a href="https://huggingface.co/codellama/CodeLlama-13b-Instruct-hf">CodeLlama-13B-Instruct</a></td>
+    <td><a href="https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf">CodeLlama-13B-Instruct</a></td>
     <td>lora</td>
     <td></td>
     <td></td>
