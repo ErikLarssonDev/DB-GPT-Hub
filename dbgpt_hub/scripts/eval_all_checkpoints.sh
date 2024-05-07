@@ -1,5 +1,5 @@
 # A script that evaluates all checkpoints in the checkpoint_dir, all outputs are saved in the corresponding checkpoint_dir
-checkpoint_dir="dbgpt_hub/output/adapter/CodeLlama-7b-sql-lora-25e" # CodeLlama-7b-sql-lora-11e"
+checkpoint_dir="dbgpt_hub/output/adapter/Meta-Llama-3-8B-Instruct-lora-20e" # CodeLlama-7b-sql-lora-11e"
 
 current_date=$(date +"%Y%m%d_%H%M")
 pred_log="dbgpt_hub/output/logs/pred_${current_date}.log"
