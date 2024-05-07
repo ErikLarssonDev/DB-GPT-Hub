@@ -254,5 +254,11 @@ def get_infer_args(
             and len(model_args.checkpoint_dir) != 1
         ):
             raise ValueError("Quantized model only accepts a single checkpoint.")
+    
+    logger.info(
+        "Compute dtype: {}".format(
+            str(model_args.compute_dtype),
+        )
+    )
 
     return model_args, data_args, finetuning_args, generating_args
