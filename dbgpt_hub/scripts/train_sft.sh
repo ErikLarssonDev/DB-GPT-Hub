@@ -17,6 +17,7 @@ dataset="example_text2sql_train"
 if [ "$num_shot" -eq 1 ]; then
     dataset="${dataset}_one_shot"
 fi
+echo "Dataset: ${dataset}" >>${train_log}
 model_name_or_path="meta-llama/Meta-Llama-3-8B-Instruct "
 # meta-llama/Meta-Llama-3-8B-Instruct 
 # codellama/CodeLlama-7b-Instruct-hf
