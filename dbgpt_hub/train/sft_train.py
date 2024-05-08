@@ -120,8 +120,8 @@ def run_sft(
                 )
 
         eval_data_args = copy.deepcopy(data_args)
-        eval_data_args.dataset = "example_text2sql_dev_one_shot.json"
-        eval_data_args.dataset_list = ["example_text2sql_dev_one_shot.json"]
+        eval_data_args.dataset = "example_text2sql_dev.json"
+        eval_data_args.dataset_list = ["example_text2sql_dev.json"]
         eval_dataset = preprocess_dataset(eval_dataset, tokenizer, eval_data_args, training_args, "sft")
     else:
         eval_dataset = dataset
