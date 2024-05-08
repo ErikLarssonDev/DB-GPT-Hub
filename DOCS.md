@@ -27,7 +27,18 @@
   </tr>
 
   <tr>
-  <td><a href="https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf">CodeLlama-7B-Instruct (Not Our Experiments)</a></td>
+    <td><a href="https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf">CodeLlama-7B-Instruct (Not Our Experiments)</a></td>
+    <td>base</td>
+    <td>0.214</td>
+    <td>0.177</td>
+    <td>0.092</td>
+    <td>0.036</td>
+    <td>0.149</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+  <td></td>
     <td>lora</td>
     <td>0.923</td>
     <td>0.756</td>
@@ -48,20 +59,20 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>
-    <td></td>
+
+  <tr>                                                      
+    <td><a href="https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf">CodeLlama-7B-Instruct</a></td>
     <td>base</td>
-    <td>0.214</td>
-    <td>0.177</td>
-    <td>0.092</td>
-    <td>0.036</td>
-    <td>0.149</td>
+    <td>0.250 </td>
+    <td>0.229</td>
+    <td>0.138</td>
+    <td>0.060</td>
+    <td>0.191 </td>
     <td>-</td>
     <td>-</td>
   </tr>
-
   <tr>
-    <td><a href="https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf">CodeLlama-7B-Instruct</a></td>
+    <td></td>
     <td>lora</td>
     <td>0.935</td>
     <td>0.834</td>
@@ -82,20 +93,20 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>                                                      
-    <td></td>
-    <td>base</td>
-    <td>0.250 </td>
-    <td>0.229</td>
-    <td>0.138</td>
-    <td>0.060</td>
-    <td>0.191 </td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
 
-  <tr>
+  <tr>                                                      
     <td><a href="https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct">Llama3-8B-Instruct</a></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
     <td>lora</td>
     <td></td>
     <td></td>
@@ -108,17 +119,6 @@
   <tr>
     <td></td>
     <td>qlora</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-  <tr>                                                      
-    <td></td>
-    <td>base</td>
     <td></td>
     <td></td>
     <td></td>
@@ -128,8 +128,19 @@
     <td>-</td>
   </tr>
 
-  <tr>
+  <tr>                                                      
     <td><a href="https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf">CodeLlama-13B-Instruct</a></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td></td>
     <td>lora</td>
     <td></td>
     <td></td>
@@ -142,17 +153,6 @@
   <tr>
     <td></td>
     <td>qlora</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-  <tr>                                                      
-    <td></td>
-    <td>base</td>
     <td></td>
     <td></td>
     <td></td>
@@ -164,6 +164,17 @@
 
   <tr>
     <td><a href="https://huggingface.co/defog/sqlcoder-7b">sqlcoder-7b (mistral)</a></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr> 
+  <tr>
+    <td></td>
     <td>lora</td>
     <td></td>
     <td></td>
@@ -184,20 +195,20 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>
-    <td></td>
-    <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>-</td>
-    <td>-</td>
-  </tr> 
 
   <tr>
     <td><a href="https://huggingface.co/defog/sqlcoder2">sqlcoder2-15b (starcoder)</a></td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr> 
+  <tr>
+    <td></td>
     <td>lora</td>
     <td></td>
     <td></td>
@@ -218,20 +229,20 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>
-    <td></td>
-    <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>-</td>
-    <td>-</td>
-  </tr> 
 
   <tr>
     <td>(Ours)</td>
+    <td>base</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr> 
+  <tr>
+    <td></td>
     <td>lora</td>
     <td></td>
     <td></td>
@@ -252,17 +263,6 @@
     <td>-</td>
     <td>-</td>
   </tr>
-  <tr>
-    <td></td>
-    <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>-</td>
-    <td>-</td>
-  </tr> 
 </table>
 
 | Model Parameters | GPU RAM | CPU RAM | DISK   |
@@ -273,7 +273,7 @@
 
 ### CodeLlama 7B with LoRA
 The best configuration was chosen based on the best execution accuracy on the spider development set which was with 10 epochs/5410 training steps. 
-<img src="/home/erila/llm-finetune/DB-GPT-Hub/dbgpt_hub/output/results_codellama7b-lora.png"
+<img src="dbgpt_hub/output/results_codellama7b-lora.png"
      alt="Results for CodeLlama 7B with LoRA"
      style="display: flex; margin-right: 10px;" />
      
