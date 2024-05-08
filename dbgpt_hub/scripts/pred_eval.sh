@@ -14,7 +14,6 @@ CUDA_VISIBLE_DEVICES=0,1  python dbgpt_hub/predict/predict.py \
     --template llama2 \
     --finetuning_type lora \
     --predicted_input_filename dbgpt_hub/data/example_text2sql_dev.json \
-    --compute_dtype torch.bfloat16 \
     --predicted_out_filename "${folder}/${experiment_name}_pred.sql" >> ${pred_log}
     # --checkpoint_dir "path_to_model_checkpoint_folder" \
     # 
