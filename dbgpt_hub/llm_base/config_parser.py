@@ -254,11 +254,23 @@ def get_infer_args(
             and len(model_args.checkpoint_dir) != 1
         ):
             raise ValueError("Quantized model only accepts a single checkpoint.")
-    
+
     logger.info(
         "Compute dtype: {}".format(
             str(model_args.compute_dtype),
         )
     )
+
+    if not torch.cuda.is_bf16_supported():
+        raise ValueError("Current device does not support bf16 training.")
+    
+
+    if model_args.compute_dtype == None:
+        model_args.compute_dtype = torch.bfloat16
+        logger.info(
+            "Compute dtype changed from None to: {}".format(
+                str(model_args.compute_dtype),
+            )
+        )
 
     return model_args, data_args, finetuning_args, generating_args
