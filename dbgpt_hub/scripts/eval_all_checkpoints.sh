@@ -17,7 +17,7 @@ for folder in "$checkpoint_dir"/*; do
         echo " Pred Start time: $(date -d @$start_time +'%Y-%m-%d %H:%M:%S')" >>${pred_log}
 
         CUDA_VISIBLE_DEVICES=0,1  python dbgpt_hub/predict/predict.py \
-            --model_name_or_path codellama/CodeLlama-7b-Instruct-hf \
+            --model_name_or_path meta-llama/Meta-Llama-3-8B-Instruct \
             --template llama2 \
             --finetuning_type lora \
             --predicted_input_filename dbgpt_hub/data/example_text2sql_dev.json \
