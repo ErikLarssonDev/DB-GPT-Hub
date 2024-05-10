@@ -97,11 +97,11 @@
   <tr>                                                      
     <td><a href="https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct">Llama3-8B-Instruct</a></td>
     <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>0.032</td>
+    <td>0.043</td>
+    <td>0.034</td>
+    <td>0.030</td>
+    <td>0.037</td>
     <td>-</td>
     <td>-</td>
   </tr>
