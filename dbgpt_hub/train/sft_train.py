@@ -61,8 +61,8 @@ def run_sft(
     if training_args.do_eval:
 
         dataset_attr = DatasetAttr(
-                    "example_text2sql_dev_one_shot.json",
-                    dataset_name="example_text2sql_dev_one_shot.json",
+                    "example_text2sql_dev.json",
+                    dataset_name="example_text2sql_dev.json",
                     dataset_sha1=None,
                     stage=None,
                 )
