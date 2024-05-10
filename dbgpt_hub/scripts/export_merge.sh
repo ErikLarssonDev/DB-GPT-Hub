@@ -5,7 +5,8 @@ python dbgpt_hub/train/export_model.py \
     --finetuning_type lora \
     --checkpoint_dir dbgpt_hub/output/adapter/CodeLlama-13b-sql-lora \
     --output_dir dbgpt_hub/output/codellama-13b-sql-sft \
-    --fp16
+    --bf16
+    # --fp16
 
 
 ## Baichuan2
