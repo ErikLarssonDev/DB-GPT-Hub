@@ -200,14 +200,14 @@ if __name__ == "__main__":
     data_folder = os.path.join(ROOT_PATH, "dbgpt_hub/data")
     data_info = [
         {
-            "data_source": "spider",
+            "data_source": "spider_big",
             "train_file": ["train_spider.json", "train_others.json"],
             "dev_file": ["dev.json"],
             "tables_file": "tables.json",
             "db_id_name": "db_id",
             "is_multiple_turn": False,
-            "train_output": "example_train.json",
-            "dev_output": "example_dev.json",
+            "train_output": "spider_big_train.json",
+            "dev_output": "spider_big_dev.json",
         }
     ]
     preprocess_sft_data(data_folder=data_folder, data_info=data_info)

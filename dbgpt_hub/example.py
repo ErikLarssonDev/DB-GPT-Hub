@@ -12,14 +12,14 @@ MODEL_NAME_OR_PATH = "codellama/CodeLlama-7b-Instruct-hf"
 data_folder = "dbgpt_hub/data"
 data_info = [
         {
-            "data_source": "spider",
+            "data_source": "spider_big",
             "train_file": ["train_spider.json", "train_others.json"],
             "dev_file": ["dev.json"],
             "tables_file": "tables.json",
             "db_id_name": "db_id",
             "is_multiple_turn": False,
-            "train_output": "spider_train.json",
-            "dev_output": "spider_dev.json",
+            "train_output": "spider_big_train.json",
+            "dev_output": "spider_big_dev.json",
         }
 ]
 
@@ -76,11 +76,11 @@ evaluate_args =  {
 }
 
 # Run the whole fine-tuning workflow
-# preprocess_sft_data(
-#       data_folder = data_folder,
-#       data_info = data_info
-# )
+preprocess_sft_data(
+      data_folder = data_folder,
+      data_info = data_info
+)
 
 # start_sft(train_args)
 # start_predict(predict_args)
-start_evaluate(evaluate_args)
+# start_evaluate(evaluate_args)
