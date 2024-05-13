@@ -39,7 +39,7 @@ def sort_values(values, checkpoint_ids):
 
 
 # Path to the log file
-log_file_path = '/home/erila/llm-finetune/DB-GPT-Hub/dbgpt_hub/output/logs/pred_20240506_1606.log'
+log_file_path = '/home/erila/llm-finetune/DB-GPT-Hub/dbgpt_hub/output/logs/pred_20240510_1036.log'
 
 # Parse the log file and get the data
 checkpoint_ids, easy, medium, hard, extra, all = parse_log_file(log_file_path)
@@ -75,5 +75,5 @@ plt.xlabel('Step (541 steps per epoch)')
 plt.ylabel('Execution Accuracy')
 plt.title('Execution Accuracy vs Number of Training Steps')
 plt.grid(True)
-plt.savefig('/home/erila/llm-finetune/DB-GPT-Hub/dbgpt_hub/output/results_codellama7b-lora-' + log_file_path.split('/')[-1].replace('.log', '.png'))
+plt.savefig('/home/erila/llm-finetune/DB-GPT-Hub/dbgpt_hub/output/results_llama3-lora-' + log_file_path.split('/')[-1].replace('.log', '.png'))
 plt.show()

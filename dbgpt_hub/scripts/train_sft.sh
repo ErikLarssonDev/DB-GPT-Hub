@@ -18,7 +18,7 @@ if [ "$num_shot" -eq 1 ]; then
     dataset="${dataset}_one_shot"
 fi
 echo "Dataset: ${dataset}" >>${train_log}
-model_name_or_path="meta-llama/Meta-Llama-3-8B-Instruct "
+model_name_or_path="meta-llama/Meta-Llama-3-8B-Instruct"
 # meta-llama/Meta-Llama-3-8B-Instruct 
 # codellama/CodeLlama-7b-Instruct-hf
 output_dir="dbgpt_hub/output/adapter/${experiment_name}"
