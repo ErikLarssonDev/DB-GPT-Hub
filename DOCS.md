@@ -163,13 +163,13 @@
   </tr>
 
   <tr>
-    <td><a href="https://huggingface.co/defog/sqlcoder-7b">sqlcoder-7b (mistral)</a></td>
+    <td><a href="https://huggingface.co/defog/sqlcoder-7b-2">sqlcoder-7b (Codellama2)</a></td>
     <td>base</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>0.669</td>
+    <td>0.540</td>
+    <td>0.333</td>
+    <td>0.271</td>
+    <td>0.493</td>
     <td>-</td>
     <td>-</td>
   </tr> 
