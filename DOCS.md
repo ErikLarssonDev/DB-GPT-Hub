@@ -108,11 +108,11 @@
   <tr>
     <td></td>
     <td>lora</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>0.012</td>
+    <td>0.02</td>
+    <td>0.017</td>
+    <td>0.012</td>
+    <td>0.016</td>
     <td>-</td>
     <td>-</td>
   </tr>
@@ -276,6 +276,12 @@ The best configuration was chosen based on the best execution accuracy on the sp
 <img src="dbgpt_hub/output/results_codellama7b-lora.png"
      alt="Results for CodeLlama 7B with LoRA"
      style="display: flex; margin-right: 10px;" />
+
+### Llama 3 8B with LoRA
+The best configuration was chosen based on the best execution accuracy on the spider development set which was with 11 epochs/5951 training steps. 
+<img src="dbgpt_hub/output/results_llama3-lora-pred_20240510_1036.png"
+     alt="Results for CodeLlama 7B with LoRA"
+     style="display: flex; margin-right: 10px;" />
      
 
 ## How to run the code
@@ -293,5 +299,11 @@ Use the `run_all.sh` script to do a full evaluation and fine-tuning pipeline of 
 When the pipeline is finished you can visualize the results of the evaluation with the checkpoints by changing the `log_file_path` in `plot_pred_log.py` and running:
 ```bash
 python dbgpt_hub/plot_pred_log.py
+```
+
+### Demo
+To run a demo of the project run
+```bash
+python3 deployment.py
 ```
 
