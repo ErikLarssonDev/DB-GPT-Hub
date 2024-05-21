@@ -1,5 +1,5 @@
 # A script that evaluates all checkpoints in the checkpoint_dir, all outputs are saved in the corresponding checkpoint_dir
-checkpoint_dir="dbgpt_hub/output/adapter/Meta-Llama-3-8B-Instruct-lora-20e" # CodeLlama-7b-sql-lora-11e"
+checkpoint_dir="dbgpt_hub/output/adapter/CodeLlama-7b-Instruct-hf-spider-big-lora-20e" # CodeLlama-7b-sql-lora-11e"
 
 current_date=$(date +"%Y%m%d_%H%M")
 pred_log="dbgpt_hub/output/logs/pred_${current_date}.log"
@@ -17,10 +17,10 @@ for folder in "$checkpoint_dir"/*; do
         echo " Pred Start time: $(date -d @$start_time +'%Y-%m-%d %H:%M:%S')" >>${pred_log}
 
         CUDA_VISIBLE_DEVICES=0,1  python dbgpt_hub/predict/predict.py \
-            --model_name_or_path meta-llama/Meta-Llama-3-8B-Instruct \
+            --model_name_or_path meta-llama/CodeLlama-7b-Instruct-hf \
             --template llama2 \
             --finetuning_type lora \
-            --predicted_input_filename dbgpt_hub/data/example_text2sql_dev.json \
+            --predicted_input_filename dbgpt_hub/data/spider_big_dev.json \
             --checkpoint_dir $folder \
             --predicted_out_filename "${folder}/pred.sql" >> ${pred_log}
 
@@ -35,9 +35,9 @@ for folder in "$checkpoint_dir"/*; do
         # Evaluation
         python dbgpt_hub/eval/evaluation.py \
             --input "${folder}/pred.sql" \
-            --gold "dbgpt_hub/data/eval_data/gold.txt" \
-            --db "dbgpt_hub/data/spider/database" \
-            --table "dbgpt_hub/data/eval_data/tables.json" \
+            --gold "dbgpt_hub/data/spider_big/dev_gold.sql" \
+            --db "dbgpt_hub/data/spider_big/database" \
+            --table "dbgpt_hub/data/spider_big/tables.json" \
             --etype "exec" \
             --plug_value >> ${pred_log}
     fi

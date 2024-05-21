@@ -1,5 +1,5 @@
 folder="dbgpt_hub/output/pred"
-experiment_name="Llama3-8b_baseline"
+experiment_name="CodeLlama-7b_baseline_spider_big"
 
 echo "Running Python script for folder: $folder"
 
@@ -10,10 +10,10 @@ start_time=$(date +%s)
 echo " Pred Start time: $(date -d @$start_time +'%Y-%m-%d %H:%M:%S')" >>${pred_log}
 
 CUDA_VISIBLE_DEVICES=0,1  python dbgpt_hub/predict/predict.py \
-    --model_name_or_path meta-llama/Meta-Llama-3-8B-Instruct \
+    --model_name_or_path meta-llama/CodeLlama-7b-Instruct-hf \
     --template llama2 \
     --finetuning_type lora \
-    --predicted_input_filename dbgpt_hub/data/example_text2sql_dev.json \
+    --predicted_input_filename dbgpt_hub/data/spider_big_dev.json \
     --predicted_out_filename "${folder}/${experiment_name}_pred.sql" >> ${pred_log}
     # --checkpoint_dir "path_to_model_checkpoint_folder" \
     # 
@@ -29,8 +29,8 @@ echo "Time elapsed: ${hour}  hour $min min " >>${pred_log}
 # Evaluation
 python dbgpt_hub/eval/evaluation.py \
     --input "${folder}/${experiment_name}_pred.sql" \
-    --gold "dbgpt_hub/data/eval_data/gold.txt" \
-    --db "dbgpt_hub/data/spider/database" \
-    --table "dbgpt_hub/data/eval_data/tables.json" \
+    --gold "dbgpt_hub/data/spider_big/dev_gold.sql" \
+    --db "dbgpt_hub/data/spider_big/database" \
+    --table "dbgpt_hub/data/spider_big/tables.json" \
     --etype "exec" \
     --plug_value \

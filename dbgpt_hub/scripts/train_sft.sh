@@ -1,6 +1,6 @@
 wandb online # Close wandb
 # a100 ,单卡
-experiment_name="Meta-Llama-3-8B-Instruct-lora-20e"
+experiment_name="CodeLlama-7b-Instruct-hf-spider-big-lora-20e"
 
 current_date=$(date +"%Y%m%d_%H%M")
 train_log="dbgpt_hub/output/logs/train_sft_${experiment_name}_${current_date}.log"
@@ -13,12 +13,12 @@ num_shot=0
 # one-shot train
 # num_shot=1
 
-dataset="example_text2sql_train"
+dataset="spider_big_train"
 if [ "$num_shot" -eq 1 ]; then
     dataset="${dataset}_one_shot"
 fi
 echo "Dataset: ${dataset}" >>${train_log}
-model_name_or_path="meta-llama/Meta-Llama-3-8B-Instruct"
+model_name_or_path="meta-llama/CodeLlama-7b-Instruct-hf"
 # meta-llama/Meta-Llama-3-8B-Instruct 
 # codellama/CodeLlama-7b-Instruct-hf
 output_dir="dbgpt_hub/output/adapter/${experiment_name}"
